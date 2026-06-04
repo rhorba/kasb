@@ -117,6 +117,46 @@
       "other": "آخر"
     }
   },
+  "ae": {
+    "title": "دليل المقاول الذاتي",
+    "subtitle": "خطوات باش تسجل كمقاول ذاتي وتستفاد من الحماية الاجتماعية",
+    "progress": "التقدم",
+    "completed": "مبروك — أنت الآن مقاول ذاتي مسجل",
+    "simulation": {
+      "title": "تقدير الضريبة ديالك",
+      "monthlyRevenue": "الدخل الشهري المتوسط",
+      "annualTax": "الضريبة السنوية ({rate}%)",
+      "needMoreData": "سجل 3 شهور باش نحسب التقدير"
+    },
+    "declaration": {
+      "commerceRate": "نسبة CPU: 0.5% من رقم الأعمال السنوي — تصريح كل 3 شهور",
+      "servicesRate": "نسبة CPU: 1% من رقم الأعمال السنوي — تصريح كل 3 شهور"
+    },
+    "openRNAE": "سجل على rn.ae.gov.ma",
+    "markDone": "تم",
+    "undo": "إلغاء",
+    "rnaLabel": "رقم RNAE (اختياري)",
+    "rnaPlaceholder": "AE-XXXXXXXXX",
+    "complete": "أنهيت التسجيل 🎉"
+  },
+  "stock": {
+    "title": "تتبع المخزون",
+    "addItem": "زيد منتوج",
+    "saveItem": "حفظ",
+    "itemName": "اسم المنتوج",
+    "itemNamePh": "مثلاً: زيت، سكر، سمنت…",
+    "unit": "الوحدة",
+    "purchasePrice": "ثمن الشراء (درهم)",
+    "sellingPrice": "ثمن البيع (درهم)",
+    "currentStock": "المخزون الحالي",
+    "lowStockThreshold": "تنبيه المخزون",
+    "noItems": "ما كاين شي منتوج — زيد أول منتوج ديالك",
+    "lowStockAlert": "{count} منتوج في المخزون القليل",
+    "lowStock": "المخزون قليل (الحد: {threshold})",
+    "remaining": "متبقي",
+    "recordSale": "سجل بيع",
+    "confirmSell": "تأكيد"
+  },
   "customers": {
     "title": "المدينون",
     "addCustomer": "زيد زبون",

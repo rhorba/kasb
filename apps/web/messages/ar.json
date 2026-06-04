@@ -117,6 +117,46 @@
       "other": "أخرى"
     }
   },
+  "ae": {
+    "title": "دليل المقاول الذاتي",
+    "subtitle": "خطوات للتسجيل كمقاول ذاتي والاستفادة من الحماية الاجتماعية",
+    "progress": "التقدم",
+    "completed": "مبروك — أنتَ الآن مقاول ذاتي مسجَّل",
+    "simulation": {
+      "title": "تقدير الضريبة",
+      "monthlyRevenue": "متوسط الإيراد الشهري",
+      "annualTax": "الضريبة السنوية التقديرية ({rate}%)",
+      "needMoreData": "سجّل 3 أشهر من النشاط لحساب التقدير"
+    },
+    "declaration": {
+      "commerceRate": "نسبة CPU: 0.5% من رقم الأعمال السنوي — تصريح ربع سنوي",
+      "servicesRate": "نسبة CPU: 1% من رقم الأعمال السنوي — تصريح ربع سنوي"
+    },
+    "openRNAE": "التسجيل على rn.ae.gov.ma",
+    "markDone": "تم",
+    "undo": "إلغاء",
+    "rnaLabel": "رقم RNAE (اختياري)",
+    "rnaPlaceholder": "AE-XXXXXXXXX",
+    "complete": "إتمام التسجيل 🎉"
+  },
+  "stock": {
+    "title": "متابعة المخزون",
+    "addItem": "إضافة منتج",
+    "saveItem": "حفظ",
+    "itemName": "اسم المنتج",
+    "itemNamePh": "مثال: زيت، سكر، أسمنت…",
+    "unit": "الوحدة",
+    "purchasePrice": "سعر الشراء (درهم)",
+    "sellingPrice": "سعر البيع (درهم)",
+    "currentStock": "المخزون الحالي",
+    "lowStockThreshold": "حد التنبيه",
+    "noItems": "لا توجد منتجات — أضف أول منتج",
+    "lowStockAlert": "{count} منتج(ات) في مخزون منخفض",
+    "lowStock": "مخزون منخفض (الحد: {threshold})",
+    "remaining": "متبقٍ",
+    "recordSale": "تسجيل بيع",
+    "confirmSell": "تأكيد"
+  },
   "customers": {
     "title": "العملاء",
     "addCustomer": "إضافة عميل",

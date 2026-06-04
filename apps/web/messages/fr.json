@@ -117,6 +117,46 @@
       "other": "Autre"
     }
   },
+  "ae": {
+    "title": "Devenir Auto-Entrepreneur",
+    "subtitle": "Étapes pour vous inscrire en tant qu'auto-entrepreneur et bénéficier d'une protection sociale",
+    "progress": "Progression",
+    "completed": "Félicitations — vous êtes maintenant auto-entrepreneur enregistré",
+    "simulation": {
+      "title": "Estimation de votre impôt",
+      "monthlyRevenue": "Revenu mensuel moyen",
+      "annualTax": "Impôt annuel estimé ({rate}%)",
+      "needMoreData": "Enregistrez 3 mois d'activité pour calculer l'estimation"
+    },
+    "declaration": {
+      "commerceRate": "Taux CPU : 0,5% du chiffre d'affaires annuel — déclaration trimestrielle",
+      "servicesRate": "Taux CPU : 1% du chiffre d'affaires annuel — déclaration trimestrielle"
+    },
+    "openRNAE": "S'inscrire sur rn.ae.gov.ma",
+    "markDone": "Terminé",
+    "undo": "Annuler",
+    "rnaLabel": "Numéro RNAE (optionnel)",
+    "rnaPlaceholder": "AE-XXXXXXXXX",
+    "complete": "Finaliser l'inscription 🎉"
+  },
+  "stock": {
+    "title": "Suivi des Stocks",
+    "addItem": "Ajouter un article",
+    "saveItem": "Enregistrer",
+    "itemName": "Nom de l'article",
+    "itemNamePh": "Ex: Huile, Sucre, Ciment…",
+    "unit": "Unité",
+    "purchasePrice": "Prix d'achat (MAD)",
+    "sellingPrice": "Prix de vente (MAD)",
+    "currentStock": "Stock actuel",
+    "lowStockThreshold": "Alerte stock bas",
+    "noItems": "Aucun article — ajoutez votre premier produit",
+    "lowStockAlert": "{count} article(s) en stock bas",
+    "lowStock": "Stock bas (seuil: {threshold})",
+    "remaining": "restant(s)",
+    "recordSale": "Enregistrer une vente",
+    "confirmSell": "Confirmer"
+  },
   "customers": {
     "title": "Clients",
     "addCustomer": "Ajouter un client",
