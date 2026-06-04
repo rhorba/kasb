@@ -143,12 +143,40 @@
     "eligible": "Éligible au micro-crédit",
     "notEligible": "Continuez à enregistrer vos entrées",
     "monthsOfData": "{months} mois de données",
+    "noScore": "Enregistrez 30 jours d'activité pour voir votre score",
+    "noScoreHint": "Notez vos ventes et dépenses chaque jour",
+    "previewNote": "Score estimé — recalculé chaque nuit",
+    "breakdown": "Détail du score",
+    "partners": "Partenaires microfinance",
+    "noPartners": "Aucun partenaire disponible",
+    "minScore": "Score minimum",
+    "eligibleBadge": "Éligible",
+    "notEligibleBadge": "Non éligible",
+    "months": "mois",
+    "apply": "Faire une demande",
+    "applyTo": "Demande chez",
+    "consentNote": "En confirmant, vous acceptez de partager votre résumé financier avec ce partenaire",
+    "amountPlaceholder": "Montant souhaité (MAD)",
+    "confirmApply": "Confirmer la demande",
+    "myApplications": "Mes demandes",
+    "applicationStatus": {
+      "submitted": "Soumise",
+      "reviewing": "En cours d'examen",
+      "approved": "Approuvée",
+      "rejected": "Refusée",
+      "withdrawn": "Annulée"
+    },
     "components": {
       "revenueConsistency": "Régularité des revenus",
+      "revenueConsistencyHint": "Des revenus réguliers chaque mois améliorent votre score",
       "expenseControl": "Maîtrise des dépenses",
+      "expenseControlHint": "Des dépenses inférieures aux revenus améliorent votre score",
       "growthTrend": "Tendance de croissance",
+      "growthTrendHint": "Des revenus en hausse chaque mois améliorent votre score",
       "debtRecoveryRate": "Taux de recouvrement",
-      "dataRichness": "Complétude des données"
+      "debtRecoveryHint": "Des clients qui remboursent améliorent votre score",
+      "dataRichness": "Complétude des données",
+      "dataRichnessHint": "6 mois de données complètes maximisent votre score"
     }
   }
 }

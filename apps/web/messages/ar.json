@@ -143,12 +143,40 @@
     "eligible": "مؤهل للحصول على قرض صغير",
     "notEligible": "واصل تسجيل عملياتك",
     "monthsOfData": "{months} أشهر من البيانات",
+    "noScore": "سجّل 30 يوماً من النشاط لرؤية نقطتك",
+    "noScoreHint": "سجّل مبيعاتك ومصروفاتك يومياً",
+    "previewNote": "نقطة تقديرية — تُحسب كل ليلة",
+    "breakdown": "تفاصيل النقطة",
+    "partners": "شركاء التمويل الأصغر",
+    "noPartners": "لا يوجد شركاء متاحون",
+    "minScore": "الحد الأدنى للنقطة",
+    "eligibleBadge": "مؤهل",
+    "notEligibleBadge": "غير مؤهل",
+    "months": "شهر",
+    "apply": "تقديم طلب",
+    "applyTo": "طلب تمويل لدى",
+    "consentNote": "بالتأكيد، توافق على مشاركة ملخص حساباتك مع الشريك",
+    "amountPlaceholder": "المبلغ المطلوب (درهم)",
+    "confirmApply": "تأكيد الطلب",
+    "myApplications": "طلباتي",
+    "applicationStatus": {
+      "submitted": "مُقدَّم",
+      "reviewing": "قيد الدراسة",
+      "approved": "مقبول",
+      "rejected": "مرفوض",
+      "withdrawn": "مُلغى"
+    },
     "components": {
       "revenueConsistency": "انتظام الإيرادات",
+      "revenueConsistencyHint": "إيرادات منتظمة شهرياً تحسّن نقطتك",
       "expenseControl": "التحكم في المصروفات",
+      "expenseControlHint": "مصروفات أقل من الإيرادات تحسّن نقطتك",
       "growthTrend": "اتجاه النمو",
+      "growthTrendHint": "إيرادات متصاعدة شهرياً تحسّن نقطتك",
       "debtRecoveryRate": "معدل استرداد الديون",
-      "dataRichness": "اكتمال البيانات"
+      "debtRecoveryHint": "عملاء يسددون ديونهم يحسّنون نقطتك",
+      "dataRichness": "اكتمال البيانات",
+      "dataRichnessHint": "6 أشهر من البيانات الكاملة يرفعون نقطتك"
     }
   }
 }

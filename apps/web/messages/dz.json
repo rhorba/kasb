@@ -143,12 +143,40 @@
     "eligible": "مستحق القرض",
     "notEligible": "مزال — زيد من الإدخالات",
     "monthsOfData": "{months} شهر من البيانات",
+    "noScore": "سجل 30 يوم باش تشوف النقطة ديالك",
+    "noScoreHint": "دخل الإيرادات والمصاريف ديالك كل يوم",
+    "previewNote": "هاد النقطة تقديرية — تحسب كل ليلة",
+    "breakdown": "تفاصيل النقطة",
+    "partners": "شركاء التمويل",
+    "noPartners": "ما كاين شي شركاء متاحين",
+    "minScore": "النقطة الدنيا",
+    "eligibleBadge": "مستحق",
+    "notEligibleBadge": "غير مستحق",
+    "months": "شهر",
+    "apply": "قدم الطلب",
+    "applyTo": "طلب قرض عند",
+    "consentNote": "بالضغط على تأكيد، توافق على مشاركة ملخص حساباتك مع الشريك",
+    "amountPlaceholder": "المبلغ المطلوب (درهم)",
+    "confirmApply": "تأكيد الطلب",
+    "myApplications": "طلباتي",
+    "applicationStatus": {
+      "submitted": "مرسل",
+      "reviewing": "قيد الدراسة",
+      "approved": "مقبول",
+      "rejected": "مرفوض",
+      "withdrawn": "ملغى"
+    },
     "components": {
-      "revenueConsistency": "الدخل المنتظم",
-      "expenseControl": "تحكم في الخروج",
-      "growthTrend": "النمو",
+      "revenueConsistency": "انتظام الدخل",
+      "revenueConsistencyHint": "دخل منتظم كل شهر = نقطة أحسن",
+      "expenseControl": "تحكم في المصاريف",
+      "expenseControlHint": "مصاريف أقل من الدخل = نقطة أحسن",
+      "growthTrend": "نمو النشاط",
+      "growthTrendHint": "دخل كيزيد كل شهر = نقطة أحسن",
       "debtRecoveryRate": "استرجاع الديون",
-      "dataRichness": "اكتمال البيانات"
+      "debtRecoveryHint": "الزبائن كيخلصو = نقطة أحسن",
+      "dataRichness": "اكتمال البيانات",
+      "dataRichnessHint": "بيانات 6 شهور كاملة = نقطة أحسن"
     }
   }
 }
