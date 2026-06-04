@@ -71,11 +71,21 @@
   },
   "profile": {
     "title": "Mon profil",
+    "createTitle": "Créez votre profil",
+    "createSubtitle": "Renseignez les informations de base pour créer votre carnet de comptes",
     "businessName": "Nom de l'activité",
     "category": "Secteur",
     "city": "Ville",
+    "neighborhood": "Quartier (optionnel)",
     "hasFixedPremises": "J'ai un local fixe",
     "isAE": "Je suis auto-entrepreneur",
+    "rnaNumber": "Numéro RNAE (optionnel)",
+    "monthlyRevenue": "Chiffre d'affaires mensuel estimé (MAD)",
+    "saveProfile": "Sauvegarder le profil",
+    "saved": "Profil sauvegardé",
+    "errors": {
+      "save": "Erreur lors de la sauvegarde — réessayez"
+    },
     "categories": {
       "commerce": "Commerce",
       "services": "Services",

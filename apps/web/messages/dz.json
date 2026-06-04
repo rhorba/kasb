@@ -71,11 +71,21 @@
   },
   "profile": {
     "title": "الحساب ديالك",
+    "createTitle": "سجل النشاط ديالك",
+    "createSubtitle": "دخل المعلومات الأساسية باش نقدرو نبنيو الحساب ديالك",
     "businessName": "سمية النشاط",
     "category": "النوع",
     "city": "المدينة",
+    "neighborhood": "الحي (اختياري)",
     "hasFixedPremises": "عندي محل ثابت",
     "isAE": "عندي سجل تجاري",
+    "rnaNumber": "رقم RNAE (اختياري)",
+    "monthlyRevenue": "الدخل الشهري التقريبي (درهم)",
+    "saveProfile": "حفظ الحساب",
+    "saved": "تم الحفظ",
+    "errors": {
+      "save": "وقع خطأ فالحفظ — عاود"
+    },
     "categories": {
       "commerce": "تجارة",
       "services": "خدمات",

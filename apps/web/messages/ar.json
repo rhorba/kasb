@@ -71,11 +71,21 @@
   },
   "profile": {
     "title": "ملفي الشخصي",
+    "createTitle": "سجّل نشاطك",
+    "createSubtitle": "أدخل المعلومات الأساسية لإنشاء دفتر حساباتك",
     "businessName": "اسم النشاط",
     "category": "القطاع",
     "city": "المدينة",
+    "neighborhood": "الحي (اختياري)",
     "hasFixedPremises": "لدي محل ثابت",
     "isAE": "مسجل كمقاول ذاتي",
+    "rnaNumber": "رقم RNAE (اختياري)",
+    "monthlyRevenue": "رقم الأعمال الشهري التقريبي (درهم)",
+    "saveProfile": "حفظ الملف",
+    "saved": "تم الحفظ",
+    "errors": {
+      "save": "حدث خطأ أثناء الحفظ — حاول مجدداً"
+    },
     "categories": {
       "commerce": "تجارة",
       "services": "خدمات",
