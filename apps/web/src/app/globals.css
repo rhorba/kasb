@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+/* ─── Kasb Design Tokens ─────────────────────────────────────────────────── */
+@theme {
+  /* Saffron/gold — money, optimism, Morocco */
+  --color-saffron-50: oklch(97.8% 0.021 85);
+  --color-saffron-100: oklch(94.5% 0.048 85);
+  --color-saffron-200: oklch(88% 0.09 80);
+  --color-saffron-300: oklch(80% 0.13 75);
+  --color-saffron-400: oklch(72% 0.155 70);
+  --color-saffron-500: oklch(68% 0.16 68); /* #E8A020 */
+  --color-saffron-600: oklch(60% 0.14 65);
+  --color-saffron-700: oklch(50% 0.12 60);
+  --color-saffron-800: oklch(40% 0.095 58);
+  --color-saffron-900: oklch(30% 0.07 55);
+
+  /* Deep indigo — trust, professionalism, night-market depth */
+  --color-kasb-50: oklch(94% 0.025 265);
+  --color-kasb-100: oklch(87% 0.05 265);
+  --color-kasb-200: oklch(76% 0.09 265);
+  --color-kasb-300: oklch(64% 0.13 265);
+  --color-kasb-400: oklch(52% 0.155 265);
+  --color-kasb-500: oklch(30% 0.1 265); /* #2D2D6B */
+  --color-kasb-600: oklch(26% 0.09 265);
+  --color-kasb-700: oklch(22% 0.08 265);
+  --color-kasb-800: oklch(18% 0.065 265);
+  --color-kasb-900: oklch(14% 0.05 265);
+
+  /* Money colours — always consistent (green=income, red=expense) */
+  --color-income: oklch(52% 0.17 145);
+  --color-expense: oklch(52% 0.2 25);
+
+  /* Typography */
+  --font-sans: var(--font-rubik), system-ui, sans-serif;
+  --font-arabic: var(--font-noto-kufi), var(--font-rubik), system-ui, sans-serif;
+
+  /* Spacing */
+  --tap-min: 3rem; /* 48px — enforced on interactive elements */
+}
+
+/* ─── shadcn/ui CSS variables (Tailwind v4 compatible) ───────────────────── */
+/* Maps Kasb design tokens to shadcn's expected variable names.              */
+:root {
+  --background: oklch(100% 0 0);
+  --foreground: oklch(9% 0.02 265);
+  --card: oklch(100% 0 0);
+  --card-foreground: oklch(9% 0.02 265);
+  --popover: oklch(100% 0 0);
+  --popover-foreground: oklch(9% 0.02 265);
+  --primary: oklch(68% 0.16 68); /* saffron-500 */
+  --primary-foreground: oklch(100% 0 0);
+  --secondary: oklch(30% 0.1 265); /* kasb-500 indigo */
+  --secondary-foreground: oklch(100% 0 0);
+  --muted: oklch(96% 0.005 265);
+  --muted-foreground: oklch(45% 0.02 265);
+  --accent: oklch(94% 0.025 265); /* kasb-50 */
+  --accent-foreground: oklch(30% 0.1 265);
+  --destructive: oklch(52% 0.2 25); /* expense red */
+  --destructive-foreground: oklch(100% 0 0);
+  --border: oklch(90% 0.01 265);
+  --input: oklch(90% 0.01 265);
+  --ring: oklch(68% 0.16 68); /* saffron-500 */
+  --radius: 0.75rem; /* rounded-xl = 12px — big tap targets */
+}
+
+/* ─── Base ───────────────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white text-gray-900 antialiased;
+    font-size: 1rem; /* min 16px — readability for low-literacy users */
+    line-height: 1.6;
+  }
+
+  /* RTL: use Noto Kufi Arabic */
+  [dir="rtl"] body {
+    font-family: var(--font-arabic);
+  }
+
+  /* LTR: use Rubik */
+  [dir="ltr"] body {
+    font-family: var(--font-sans);
+  }
+
+  /* Enforce 48px minimum tap target on all interactive elements */
+  button,
+  a,
+  [role="button"],
+  input[type="submit"],
+  input[type="button"],
+  label[for] {
+    min-height: var(--tap-min);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Input fields also need good tap area */
+  input,
+  select,
+  textarea {
+    min-height: var(--tap-min);
+    font-size: 1rem;
+  }
+}
+
+/* ─── Utilities ──────────────────────────────────────────────────────────── */
+@layer utilities {
+  .text-income {
+    color: var(--color-income);
+  }
+  .text-expense {
+    color: var(--color-expense);
+  }
+  .bg-income {
+    background-color: var(--color-income);
+  }
+  .bg-expense {
+    background-color: var(--color-expense);
+  }
+}

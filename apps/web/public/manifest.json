@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "name": "كسب — Kasb",
+  "short_name": "كسب",
+  "description": "دير الحساب ديالك. وصّل للقرض. رسمي النشاط ديالك.",
+  "start_url": "/dz",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait-primary",
+  "theme_color": "#2D2D6B",
+  "background_color": "#FFFFFF",
+  "lang": "ar",
+  "dir": "rtl",
+  "categories": ["finance", "business"],
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "بيع جديد",
+      "short_name": "بيع +",
+      "url": "/dz/cashbook",
+      "description": "دخل بيع جديد"
+    }
+  ],
+  "screenshots": []
+}

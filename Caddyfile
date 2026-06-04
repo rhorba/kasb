@@ -1,0 +1,21 @@
+# Kasb — Caddy reverse proxy
+# Local dev: serves on http://localhost (port 80) with auto-TLS for kasb.localhost
+# Production: replace kasb.ma with the actual domain and provision a real cert
+
+kasb.localhost {
+  reverse_proxy web:3000
+  encode gzip zstd
+  header {
+    # Security headers
+    Strict-Transport-Security "max-age=31536000; includeSubDomains"
+    X-Content-Type-Options "nosniff"
+    X-Frame-Options "SAMEORIGIN"
+    Referrer-Policy "strict-origin-when-cross-origin"
+    Permissions-Policy "camera=(self), microphone=(self)"
+  }
+}
+
+# Plain HTTP fallback for local testing
+:80 {
+  reverse_proxy web:3000
+}

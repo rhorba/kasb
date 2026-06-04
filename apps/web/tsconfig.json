@@ -1,0 +1,56 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "lib": [
+      "ES2022",
+      "dom",
+      "dom.iterable"
+    ],
+    "jsx": "preserve",
+    "noEmit": true,
+    "declaration": false,
+    "declarationMap": false,
+    "allowJs": false,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@kasb/core": [
+        "../../packages/core/src/index.ts"
+      ],
+      "@kasb/db": [
+        "../../packages/db/src/index.ts"
+      ],
+      "@kasb/cashbook": [
+        "../../packages/cashbook/src/index.ts"
+      ],
+      "@kasb/credit": [
+        "../../packages/credit/src/index.ts"
+      ],
+      "@kasb/inventory": [
+        "../../packages/inventory/src/index.ts"
+      ],
+      "@kasb/whatsapp": [
+        "../../packages/whatsapp/src/index.ts"
+      ],
+      "@kasb/notifications": [
+        "../../packages/notifications/src/index.ts"
+      ]
+    },
+    "incremental": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

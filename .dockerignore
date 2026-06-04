@@ -1,0 +1,31 @@
+# ─── Git ──────────────────────────────────────────────────────────────────────
+.git
+.gitignore
+
+# ─── Dependencies (reinstalled inside Docker) ─────────────────────────────────
+node_modules
+**/node_modules
+**/.pnpm-store
+
+# ─── Next.js build outputs ────────────────────────────────────────────────────
+apps/web/.next
+apps/web/out
+
+# ─── Env files (injected as Docker environment variables) ─────────────────────
+.env
+.env.*
+!.env.example
+
+# ─── Dev tooling ──────────────────────────────────────────────────────────────
+.claude
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/vitest.config.*
+**/__tests__
+**/coverage
+
+# ─── IDE ──────────────────────────────────────────────────────────────────────
+.vscode
+.idea
+*.swp

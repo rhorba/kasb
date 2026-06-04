@@ -1,0 +1,103 @@
+{
+  "common": {
+    "appName": "كسب",
+    "loading": "جاري التحميل...",
+    "error": "حدث خطأ",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "continue": "متابعة",
+    "back": "رجوع",
+    "confirm": "تأكيد"
+  },
+  "nav": {
+    "cashbook": "دفتر الحسابات",
+    "customers": "العملاء",
+    "credit": "الائتمان",
+    "profile": "الحساب"
+  },
+  "home": {
+    "greeting": "مرحباً",
+    "addIncome": "+ بيع",
+    "addExpense": "− مصروف",
+    "todaySummary": "اليوم",
+    "income": "إيرادات",
+    "expense": "مصروفات",
+    "net": "الصافي",
+    "noEntries": "لا توجد إدخالات — سجّل أول عملية بيع"
+  },
+  "cashbook": {
+    "title": "دفتر الحسابات",
+    "newEntry": "إدخال جديد",
+    "income": "إيراد",
+    "expense": "مصروف",
+    "amount": "المبلغ (درهم)",
+    "category": "الفئة",
+    "description": "ملاحظة (اختياري)",
+    "date": "التاريخ",
+    "categories": {
+      "sales": "مبيعات",
+      "stock_purchase": "مشتريات",
+      "rent": "إيجار",
+      "transport": "نقل",
+      "staff": "رواتب",
+      "loan_repayment": "سداد قرض",
+      "equipment": "معدات",
+      "utilities": "ماء وكهرباء",
+      "other_income": "إيراد آخر",
+      "other_expense": "مصروف آخر"
+    }
+  },
+  "auth": {
+    "title": "مرحباً بك في كسب",
+    "subtitle": "أدخل رقم هاتفك",
+    "phoneLabel": "رقم الهاتف",
+    "phonePlaceholder": "06XXXXXXXX",
+    "sendOtp": "إرسال الرمز",
+    "otpTitle": "أدخل الرمز",
+    "otpSubtitle": "تم إرسال الرمز إلى {phone}",
+    "otpLabel": "رمز التحقق",
+    "otpPlaceholder": "XXXXXX",
+    "verifyOtp": "تحقق",
+    "resendOtp": "إعادة إرسال الرمز",
+    "signOut": "تسجيل الخروج",
+    "errors": {
+      "invalid_phone": "رقم الهاتف غير صحيح",
+      "rate_limited": "محاولات كثيرة — حاول بعد ساعة",
+      "send_failed": "فشل إرسال الرمز — حاول مجدداً",
+      "invalid_otp": "الرمز غير صحيح أو منتهي الصلاحية",
+      "invalid_input": "بيانات غير صحيحة",
+      "server_error": "حدث خطأ — حاول مجدداً"
+    }
+  },
+  "profile": {
+    "title": "ملفي الشخصي",
+    "businessName": "اسم النشاط",
+    "category": "القطاع",
+    "city": "المدينة",
+    "hasFixedPremises": "لدي محل ثابت",
+    "isAE": "مسجل كمقاول ذاتي",
+    "categories": {
+      "commerce": "تجارة",
+      "services": "خدمات",
+      "artisanat": "صناعة تقليدية",
+      "construction": "بناء",
+      "food": "مطعم / أغذية",
+      "beauty": "حلاقة / تجميل",
+      "other": "أخرى"
+    }
+  },
+  "credit": {
+    "title": "نقطة الائتمان",
+    "score": "نقطتك في كسب",
+    "eligible": "مؤهل للحصول على قرض صغير",
+    "notEligible": "واصل تسجيل عملياتك",
+    "monthsOfData": "{months} أشهر من البيانات",
+    "components": {
+      "revenueConsistency": "انتظام الإيرادات",
+      "expenseControl": "التحكم في المصروفات",
+      "growthTrend": "اتجاه النمو",
+      "debtRecoveryRate": "معدل استرداد الديون",
+      "dataRichness": "اكتمال البيانات"
+    }
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "common": {
+    "appName": "Kasb",
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite",
+    "save": "Sauvegarder",
+    "cancel": "Annuler",
+    "continue": "Continuer",
+    "back": "Retour",
+    "confirm": "Confirmer"
+  },
+  "nav": {
+    "cashbook": "Carnet",
+    "customers": "Clients",
+    "credit": "Crédit",
+    "profile": "Profil"
+  },
+  "home": {
+    "greeting": "Bonjour",
+    "addIncome": "+ Vente",
+    "addExpense": "− Dépense",
+    "todaySummary": "Aujourd'hui",
+    "income": "Recettes",
+    "expense": "Dépenses",
+    "net": "Net",
+    "noEntries": "Aucune entrée — enregistrez votre première vente"
+  },
+  "cashbook": {
+    "title": "Carnet de comptes",
+    "newEntry": "Nouvelle entrée",
+    "income": "Recette",
+    "expense": "Dépense",
+    "amount": "Montant (MAD)",
+    "category": "Catégorie",
+    "description": "Note (optionnel)",
+    "date": "Date",
+    "categories": {
+      "sales": "Ventes",
+      "stock_purchase": "Achats stock",
+      "rent": "Loyer",
+      "transport": "Transport",
+      "staff": "Personnel",
+      "loan_repayment": "Remboursement prêt",
+      "equipment": "Équipement",
+      "utilities": "Eau / Électricité",
+      "other_income": "Autre revenu",
+      "other_expense": "Autre dépense"
+    }
+  },
+  "auth": {
+    "title": "Bienvenue sur Kasb",
+    "subtitle": "Entrez votre numéro de téléphone",
+    "phoneLabel": "Numéro de téléphone",
+    "phonePlaceholder": "06XXXXXXXX",
+    "sendOtp": "Envoyer le code",
+    "otpTitle": "Entrez le code",
+    "otpSubtitle": "Code envoyé au {phone}",
+    "otpLabel": "Code de vérification",
+    "otpPlaceholder": "XXXXXX",
+    "verifyOtp": "Vérifier",
+    "resendOtp": "Renvoyer le code",
+    "signOut": "Se déconnecter",
+    "errors": {
+      "invalid_phone": "Numéro de téléphone invalide",
+      "rate_limited": "Trop de tentatives — réessayez dans une heure",
+      "send_failed": "Échec d'envoi du code — réessayez",
+      "invalid_otp": "Code incorrect ou expiré",
+      "invalid_input": "Données invalides",
+      "server_error": "Une erreur s'est produite — réessayez"
+    }
+  },
+  "profile": {
+    "title": "Mon profil",
+    "businessName": "Nom de l'activité",
+    "category": "Secteur",
+    "city": "Ville",
+    "hasFixedPremises": "J'ai un local fixe",
+    "isAE": "Je suis auto-entrepreneur",
+    "categories": {
+      "commerce": "Commerce",
+      "services": "Services",
+      "artisanat": "Artisanat",
+      "construction": "Construction / BTP",
+      "food": "Restauration / Alimentation",
+      "beauty": "Coiffure / Beauté",
+      "other": "Autre"
+    }
+  },
+  "credit": {
+    "title": "Mon score crédit",
+    "score": "Votre score Kasb",
+    "eligible": "Éligible au micro-crédit",
+    "notEligible": "Continuez à enregistrer vos entrées",
+    "monthsOfData": "{months} mois de données",
+    "components": {
+      "revenueConsistency": "Régularité des revenus",
+      "expenseControl": "Maîtrise des dépenses",
+      "growthTrend": "Tendance de croissance",
+      "debtRecoveryRate": "Taux de recouvrement",
+      "dataRichness": "Complétude des données"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Maskable icon: full bleed indigo bg + saffron ك centered in safe zone (80% of 512 = 410px) -->
+  <rect width="512" height="512" fill="#2D2D6B"/>
+  <text
+    x="256"
+    y="340"
+    font-family="'Noto Kufi Arabic', 'Amiri', serif"
+    font-size="240"
+    font-weight="700"
+    text-anchor="middle"
+    fill="#E8A020"
+  >ك</text>
+</svg>

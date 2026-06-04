@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Kasb app icon: deep indigo background + saffron Arabic letter ك -->
+  <rect width="512" height="512" rx="96" fill="#2D2D6B"/>
+  <text
+    x="256"
+    y="360"
+    font-family="'Noto Kufi Arabic', 'Amiri', serif"
+    font-size="300"
+    font-weight="700"
+    text-anchor="middle"
+    fill="#E8A020"
+  >ك</text>
+</svg>

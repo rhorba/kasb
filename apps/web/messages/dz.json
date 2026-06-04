@@ -1,0 +1,103 @@
+{
+  "common": {
+    "appName": "كسب",
+    "loading": "تحميل...",
+    "error": "وقع خطأ",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "continue": "كمل",
+    "back": "ارجع",
+    "confirm": "تأكد"
+  },
+  "nav": {
+    "cashbook": "الدفتر",
+    "customers": "المدينون",
+    "credit": "الكريدي",
+    "profile": "الحساب"
+  },
+  "home": {
+    "greeting": "أهلا",
+    "addIncome": "بيع +",
+    "addExpense": "خروج −",
+    "todaySummary": "اليوم",
+    "income": "دخل",
+    "expense": "خروج",
+    "net": "الصافي",
+    "noEntries": "ما كاين حتى شي — دخل البيع الأول ديالك"
+  },
+  "cashbook": {
+    "title": "الدفتر",
+    "newEntry": "دخل جديد",
+    "income": "دخل",
+    "expense": "خروج",
+    "amount": "الفلوس",
+    "category": "النوع",
+    "description": "ملاحظة",
+    "date": "التاريخ",
+    "categories": {
+      "sales": "بيع",
+      "stock_purchase": "شراء السلع",
+      "rent": "الكراء",
+      "transport": "الترانسبور",
+      "staff": "الموظفين",
+      "loan_repayment": "القرض",
+      "equipment": "العتاد",
+      "utilities": "الماء والضو",
+      "other_income": "دخل آخر",
+      "other_expense": "خروج آخر"
+    }
+  },
+  "auth": {
+    "title": "أهلا بيك في كسب",
+    "subtitle": "دخل رقم التيليفون ديالك",
+    "phoneLabel": "رقم التيليفون",
+    "phonePlaceholder": "06XXXXXXXX",
+    "sendOtp": "إبعت الكود",
+    "otpTitle": "دخل الكود",
+    "otpSubtitle": "دخلنا كود على {phone}",
+    "otpLabel": "الكود",
+    "otpPlaceholder": "XXXXXX",
+    "verifyOtp": "تحقق",
+    "resendOtp": "إبعت كود آخر",
+    "signOut": "خروج",
+    "errors": {
+      "invalid_phone": "رقم التيليفون غلط",
+      "rate_limited": "كثر الطلبات — جرب من بعد ساعة",
+      "send_failed": "ما وصلش الكود — عاود",
+      "invalid_otp": "الكود غلط أو منتهي",
+      "invalid_input": "خطأ في المدخلات",
+      "server_error": "وقع خطأ — عاود"
+    }
+  },
+  "profile": {
+    "title": "الحساب ديالك",
+    "businessName": "سمية النشاط",
+    "category": "النوع",
+    "city": "المدينة",
+    "hasFixedPremises": "عندي محل ثابت",
+    "isAE": "عندي سجل تجاري",
+    "categories": {
+      "commerce": "تجارة",
+      "services": "خدمات",
+      "artisanat": "صناعة تقليدية",
+      "construction": "بناء",
+      "food": "مطعم / أكل",
+      "beauty": "حلاقة / تجميل",
+      "other": "آخر"
+    }
+  },
+  "credit": {
+    "title": "الكريدي",
+    "score": "النقطة ديالك",
+    "eligible": "مستحق القرض",
+    "notEligible": "مزال — زيد من الإدخالات",
+    "monthsOfData": "{months} شهر من البيانات",
+    "components": {
+      "revenueConsistency": "الدخل المنتظم",
+      "expenseControl": "تحكم في الخروج",
+      "growthTrend": "النمو",
+      "debtRecoveryRate": "استرجاع الديون",
+      "dataRichness": "اكتمال البيانات"
+    }
+  }
+}

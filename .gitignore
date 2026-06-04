@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+
+# Build output
+.next/
+dist/
+.turbo/
+
+# Environment
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# PWA generated files (built from source)
+public/sw.js
+public/sw.js.map
+public/workbox-*.js
+public/worker-*.js
+public/swe-worker-*.js
+public/fallback-*.js
+
+# Database
+drizzle/*.sql
+*.sqlite
+
+# System
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/settings.json
+*.swp
+
+# Windows crash dumps
+*.stackdump
