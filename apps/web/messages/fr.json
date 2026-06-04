@@ -20,10 +20,13 @@
     "addIncome": "+ Vente",
     "addExpense": "− Dépense",
     "todaySummary": "Aujourd'hui",
+    "todayBalance": "Bilan du jour",
     "income": "Recettes",
     "expense": "Dépenses",
     "net": "Net",
-    "noEntries": "Aucune entrée — enregistrez votre première vente"
+    "recentEntries": "Dernières entrées",
+    "seeAll": "Voir tout",
+    "noEntries": "Aucune entrée aujourd'hui — enregistrez votre première vente"
   },
   "cashbook": {
     "title": "Carnet de comptes",
@@ -34,6 +37,20 @@
     "category": "Catégorie",
     "description": "Note (optionnel)",
     "date": "Date",
+    "net": "Net",
+    "today": "Aujourd'hui",
+    "week": "Semaine",
+    "month": "Mois",
+    "confirmEntry": "Enregistrer {amount}",
+    "saved": "Enregistré ✓",
+    "noEntries": "Aucune entrée — enregistrez votre première vente",
+    "correction": {
+      "title": "Corriger l'entrée",
+      "cta": "Corriger cette entrée",
+      "note": "Les entrées ne peuvent pas être supprimées — une correction crée une nouvelle entrée",
+      "badge": "Corrigé",
+      "isCorrection": "Correction"
+    },
     "categories": {
       "sales": "Ventes",
       "stock_purchase": "Achats stock",

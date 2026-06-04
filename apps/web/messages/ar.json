@@ -20,10 +20,13 @@
     "addIncome": "+ بيع",
     "addExpense": "− مصروف",
     "todaySummary": "اليوم",
+    "todayBalance": "رصيد اليوم",
     "income": "إيرادات",
     "expense": "مصروفات",
     "net": "الصافي",
-    "noEntries": "لا توجد إدخالات — سجّل أول عملية بيع"
+    "recentEntries": "آخر الإدخالات",
+    "seeAll": "عرض الكل",
+    "noEntries": "لا توجد إدخالات اليوم — سجّل أول عملية بيع"
   },
   "cashbook": {
     "title": "دفتر الحسابات",
@@ -34,6 +37,20 @@
     "category": "الفئة",
     "description": "ملاحظة (اختياري)",
     "date": "التاريخ",
+    "net": "الصافي",
+    "today": "اليوم",
+    "week": "الأسبوع",
+    "month": "الشهر",
+    "confirmEntry": "تسجيل {amount}",
+    "saved": "تم التسجيل ✓",
+    "noEntries": "لا توجد إدخالات — سجّل أول عملية بيع",
+    "correction": {
+      "title": "تصحيح الإدخال",
+      "cta": "تصحيح هذا الإدخال",
+      "note": "لا يمكن حذف الإدخالات — التصحيح ينشئ إدخالاً جديداً",
+      "badge": "مصحح",
+      "isCorrection": "تصحيح"
+    },
     "categories": {
       "sales": "مبيعات",
       "stock_purchase": "مشتريات",

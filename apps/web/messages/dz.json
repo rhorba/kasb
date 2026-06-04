@@ -20,10 +20,13 @@
     "addIncome": "بيع +",
     "addExpense": "خروج −",
     "todaySummary": "اليوم",
+    "todayBalance": "الرصيد اليوم",
     "income": "دخل",
     "expense": "خروج",
     "net": "الصافي",
-    "noEntries": "ما كاين حتى شي — دخل البيع الأول ديالك"
+    "recentEntries": "آخر الإدخالات",
+    "seeAll": "شوف الكل",
+    "noEntries": "ما كاين شي اليوم — سجل أول بيع ديالك"
   },
   "cashbook": {
     "title": "الدفتر",
@@ -32,8 +35,22 @@
     "expense": "خروج",
     "amount": "الفلوس",
     "category": "النوع",
-    "description": "ملاحظة",
+    "description": "ملاحظة (اختياري)",
     "date": "التاريخ",
+    "net": "الصافي",
+    "today": "اليوم",
+    "week": "الأسبوع",
+    "month": "الشهر",
+    "confirmEntry": "تسجيل {amount}",
+    "saved": "تم التسجيل ✓",
+    "noEntries": "ما كاين شي — سجل أول بيع ديالك",
+    "correction": {
+      "title": "تصحيح الإدخال",
+      "cta": "صحح هاد الإدخال",
+      "note": "الإدخالات ما تمحاش — التصحيح ينشئ إدخال جديد",
+      "badge": "مصحح",
+      "isCorrection": "تصحيح"
+    },
     "categories": {
       "sales": "بيع",
       "stock_purchase": "شراء السلع",
