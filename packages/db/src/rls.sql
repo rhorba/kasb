@@ -9,6 +9,11 @@
 ALTER TABLE users ENABLE ROW LEVEL SECURITY;
 ALTER TABLE users FORCE ROW LEVEL SECURITY;
 
+-- Sign-up INSERT: allowed for owner-role users (no session context yet).
+-- App layer (Zod + OTP) validates phone uniqueness and role assignment.
+CREATE POLICY users_signup_insert ON users
+  FOR INSERT WITH CHECK (role = 'owner');
+
 CREATE POLICY users_own_scope ON users
   USING (
     id = current_setting('app.current_user', true)::uuid
@@ -41,6 +46,10 @@ CREATE POLICY cash_entries_owner_scope ON cash_entries
     )
     OR current_setting('app.current_role', true) = 'admin'
   );
+
+-- Append-only invariant: no DELETE ever — corrections use correctsId.
+CREATE POLICY cash_entries_no_delete ON cash_entries
+  FOR DELETE USING (false);
 
 -- ── customers ────────────────────────────────────────────────
 ALTER TABLE customers ENABLE ROW LEVEL SECURITY;
@@ -85,13 +94,20 @@ CREATE POLICY credit_scores_owner_scope ON credit_scores
 ALTER TABLE credit_applications ENABLE ROW LEVEL SECURITY;
 ALTER TABLE credit_applications FORCE ROW LEVEL SECURITY;
 
-CREATE POLICY credit_applications_owner_scope ON credit_applications
+-- owner: own applications only
+-- admin: all applications
+-- partner: ONLY applications addressed to their org (app.current_partner)
+CREATE POLICY credit_applications_scope ON credit_applications
   USING (
     business_id IN (
       SELECT id FROM business_profiles
       WHERE user_id = current_setting('app.current_user', true)::uuid
     )
-    OR current_setting('app.current_role', true) IN ('admin', 'partner')
+    OR current_setting('app.current_role', true) = 'admin'
+    OR (
+      current_setting('app.current_role', true) = 'partner'
+      AND partner_id::text = current_setting('app.current_partner', true)
+    )
   );
 
 -- ── ae_registration_progress ──────────────────────────────────

@@ -7,11 +7,13 @@ declare module "next-auth" {
   interface User {
     role: Role;
     businessId: string | undefined;
+    partnerOrgId: string | undefined;
   }
   interface Session {
     userId: string;
     role: Role;
     businessId: string | undefined;
+    partnerOrgId: string | undefined;
   }
 }
 
@@ -20,5 +22,6 @@ declare module "next-auth/jwt" {
     userId: string;
     role: Role;
     businessId: string | undefined;
+    partnerOrgId: string | undefined;
   }
 }

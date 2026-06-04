@@ -33,7 +33,12 @@ export async function storeOtp(phone: string, code: string): Promise<void> {
   await db.insert(otpCodes).values({ phone, codeHash, expiresAt });
 }
 
-type AuthUser = { id: string; role: Role; businessId: string | undefined };
+type AuthUser = {
+  id: string;
+  role: Role;
+  businessId: string | undefined;
+  partnerOrgId: string | undefined;
+};
 
 /**
  * Verifies the OTP code against the stored Argon2id hash.
@@ -87,7 +92,7 @@ export async function verifyOtpAndGetUser(phone: string, code: string): Promise<
       target: users.phone,
       set: { phoneVerified: true },
     })
-    .returning({ id: users.id, role: users.role });
+    .returning({ id: users.id, role: users.role, partnerOrgId: users.partnerOrgId });
 
   if (!user) return null;
 
@@ -102,5 +107,6 @@ export async function verifyOtpAndGetUser(phone: string, code: string): Promise<
     id: user.id,
     role: user.role as Role,
     businessId: profile?.id,
+    partnerOrgId: user.partnerOrgId ?? undefined,
   };
 }

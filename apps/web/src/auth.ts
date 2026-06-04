@@ -13,11 +13,13 @@ declare module "next-auth" {
   interface User {
     role: Role;
     businessId: string | undefined;
+    partnerOrgId: string | undefined;
   }
   interface Session {
     userId: string;
     role: Role;
     businessId: string | undefined;
+    partnerOrgId: string | undefined;
   }
 }
 
@@ -39,7 +41,12 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
 
         if (!user) return null;
 
-        return { id: user.id, role: user.role, businessId: user.businessId };
+        return {
+          id: user.id,
+          role: user.role,
+          businessId: user.businessId,
+          partnerOrgId: user.partnerOrgId,
+        };
       },
     }),
   ],
@@ -49,21 +56,25 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        // authorize() always returns { id, role, businessId } — safe cast
-        const u = user as { id: string; role: Role; businessId: string | undefined };
+        const u = user as {
+          id: string;
+          role: Role;
+          businessId: string | undefined;
+          partnerOrgId: string | undefined;
+        };
         token.userId = u.id;
         token.role = u.role;
         token.businessId = u.businessId;
+        token.partnerOrgId = u.partnerOrgId;
       }
       return token;
     },
 
     async session({ session, token }) {
-      // Carry Kasb identity from JWT token to the session object.
-      // Token shape is set above in the jwt callback; we cast for type safety.
       session.userId = (token.userId as string | undefined) ?? "";
       session.role = (token.role as Role | undefined) ?? "owner";
       session.businessId = token.businessId as string | undefined;
+      session.partnerOrgId = token.partnerOrgId as string | undefined;
       return session;
     },
   },

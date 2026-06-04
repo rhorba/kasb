@@ -8,6 +8,13 @@
       "when": 1780573181898,
       "tag": "0000_famous_living_tribunal",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1780573399747,
+      "tag": "0001_modern_manta",
+      "breakpoints": true
     }
   ]
 }

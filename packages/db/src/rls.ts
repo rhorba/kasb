@@ -25,10 +25,13 @@ export async function withUserContext<T>(
   userId: string,
   role: Role,
   fn: (tx: KasbDB) => Promise<T>,
+  partnerOrgId?: string,
 ): Promise<T> {
   return db.transaction(async (tx) => {
     await tx.execute(sql`SELECT set_config('app.current_user', ${userId}, true)`);
     await tx.execute(sql`SELECT set_config('app.current_role', ${role}, true)`);
+    // Set partner context for partner-role users (used by credit_applications RLS)
+    await tx.execute(sql`SELECT set_config('app.current_partner', ${partnerOrgId ?? ""}, true)`);
     return fn(tx as unknown as KasbDB);
   });
 }

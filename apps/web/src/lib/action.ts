@@ -28,6 +28,7 @@ export async function requireSession(allowedRoles: Role[]): Promise<KasbSession>
     userId: raw.userId,
     role: raw.role,
     ...(raw.businessId !== undefined && { businessId: raw.businessId }),
+    ...(raw.partnerOrgId !== undefined && { partnerOrgId: raw.partnerOrgId }),
   };
 
   if (!hasRole(session, allowedRoles)) {
@@ -67,8 +68,12 @@ export function withAction<TArgs extends unknown[], TResult>(
     const { session } = authResult;
 
     try {
-      const data = await withUserContext(db, session.userId, session.role, (tx) =>
-        fn({ session, tx }, ...args),
+      const data = await withUserContext(
+        db,
+        session.userId,
+        session.role,
+        (tx) => fn({ session, tx }, ...args),
+        session.partnerOrgId,
       );
       return { ok: true, data };
     } catch (err) {

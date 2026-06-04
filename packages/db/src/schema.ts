@@ -82,6 +82,8 @@ export const users = pgTable("users", {
   language: text("language").notNull().default("dz"), // 'dz' | 'fr' | 'ar'
   isActive: boolean("is_active").notNull().default(true),
   phoneVerified: boolean("phone_verified").notNull().default(false),
+  // Set for role='partner' users — links them to the partner org they represent
+  partnerOrgId: uuid("partner_org_id"),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 

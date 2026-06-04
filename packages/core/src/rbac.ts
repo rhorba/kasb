@@ -4,6 +4,7 @@ export type KasbSession = {
   userId: string;
   role: Role;
   businessId?: string;
+  partnerOrgId?: string; // set for role='partner' users
 };
 
 // Permission matrix — CLAUDE.md §7
