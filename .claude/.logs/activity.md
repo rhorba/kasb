@@ -51,3 +51,49 @@
 - pg-boss v10 work() handlers receive `Job[]` array (not single Job) — handlers use `jobs[0]?.data`
 - Worker tsconfig: `"types": ["node"]` added to access Node.js globals
 - `biome-ignore` suppressions on `noNonNullAssertion` for DATABASE_URL in drizzle.config.ts and client.ts (startup-time assertions, correct by design)
+
+---
+
+### 2026-06-04 SPRINT_SNAPSHOT — Sprint 1
+
+**Goal**: Data Model + Business Profiles + Demo Seed
+
+#### CI Gates (GitHub run 26950342898)
+- `pnpm lint` (Biome): ✅ PASS — 80 files, 0 errors
+- `pnpm test` (Vitest): ✅ PASS — 48/48 (22 Sprint 0 + 26 new)
+- `pnpm -r typecheck` (tsc): ✅ PASS — 9/9 workspaces
+- `pnpm build` (Next.js): ✅ PASS
+
+#### Critical Security Tests
+- OTP lockout (MAX_ATTEMPTS=3): ✅ PASS (Sprint 0 tests retained)
+- Role isolation (owner/admin/partner): ✅ PASS
+- Partner sees only own leads (RLS SQL assertion): ✅ PASS
+- Append-only DELETE blocked (RLS SQL assertion): ✅ PASS
+- Offline sync idempotency: N/A — Sprint 3
+- Credit score component sum: ✅ PASS (seed integrity tests)
+
+#### DoD — Sprint 1 (4/4)
+- [x] All tables with RLS; DELETE blocked on cash_entries (cash_entries_no_delete policy)
+- [x] Business profile create/edit; demo seed loads (pnpm seed)
+- [x] offlineId unique constraint: cash_entries_offline_dedup UNIQUE(business_id, offline_id)
+- [x] FR + Darija strings for profile; pnpm build/test/lint green
+
+#### Tasks Completed (S1-01 → S1-08, all 8)
+| Task | Description | Status |
+|---|---|---|
+| S1-01 | DBA: 14 tables, 8 enums, migrations 0000+0001; notifications added | ✅ |
+| S1-02 | Security: partner isolation (app.current_partner), cash_entries no-delete, users sign-up insert | ✅ |
+| S1-03 | Backend: getMyProfile + createProfile + updateProfile server actions | ✅ |
+| S1-04 | Frontend: ProfileForm (create/edit) + ProfilePage | ✅ |
+| S1-05 | Demo seed: 5 businesses, ~600 entries, 3 MFI partners, scores 45–82 | ✅ |
+| S1-06 | i18n: Darija/FR/AR profile strings (neighborhood, rnaNumber, createTitle, etc.) | ✅ |
+| S1-07 | Tests: 26 new tests — schema validation, RBAC actions, RLS SQL, seed integrity | ✅ |
+| S1-08 | Sprint 1 snapshot | ✅ |
+
+#### Key Technical Decisions
+- `partner_org_id uuid` added to users (migration 0001) — links partner-role users to their MFI org
+- `withUserContext` extended with `partnerOrgId?` parameter → sets `app.current_partner` in Postgres
+- `KasbSession` + Auth.js JWT/session augmented with `partnerOrgId`
+- Seed bypasses RLS via session-level `set_config('app.current_role', 'admin', false)`
+- Seed generates ~600 entries with deterministic pseudo-random amounts (Math.sin hash)
+- `biome.json` ignores `**/migrations/**` (Drizzle-generated JSON not hand-written)
