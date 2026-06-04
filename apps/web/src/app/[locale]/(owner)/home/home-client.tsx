@@ -11,9 +11,10 @@ import { useState } from "react";
 type Props = {
   summary: CashEntrySummary;
   recentEntries: CashEntryWithMeta[];
+  businessId?: string | undefined;
 };
 
-export default function HomeClient({ summary, recentEntries }: Props) {
+export default function HomeClient({ summary, recentEntries, businessId }: Props) {
   const t = useTranslations("home");
   const tc = useTranslations("cashbook");
   const router = useRouter();
@@ -134,6 +135,7 @@ export default function HomeClient({ summary, recentEntries }: Props) {
       <EntrySheet
         open={sheetOpen}
         defaultType={sheetType}
+        businessId={businessId}
         onClose={() => setSheetOpen(false)}
         onSuccess={() => router.refresh()}
       />

@@ -51,6 +51,9 @@
       "badge": "Corrigé",
       "isCorrection": "Correction"
     },
+    "ocr": {
+      "confirmPrompt": "Vérifiez les données avant d'enregistrer"
+    },
     "categories": {
       "sales": "Ventes",
       "stock_purchase": "Achats stock",

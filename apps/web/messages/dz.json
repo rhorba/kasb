@@ -51,6 +51,9 @@
       "badge": "مصحح",
       "isCorrection": "تصحيح"
     },
+    "ocr": {
+      "confirmPrompt": "تحقق من البيانات قبل التسجيل"
+    },
     "categories": {
       "sales": "بيع",
       "stock_purchase": "شراء السلع",

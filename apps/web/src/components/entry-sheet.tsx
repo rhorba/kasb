@@ -1,6 +1,11 @@
 "use client";
 
 import { correctCashEntry, createCashEntry } from "@/actions/cash-entry";
+import ReceiptCaptureButton from "@/components/receipt-capture-button";
+import VoiceEntryButton from "@/components/voice-entry-button";
+import { useNetworkStatus } from "@/hooks/use-network-status";
+import { createOfflineEntry } from "@/lib/idb/offline-entry";
+import type { ReceiptDraft } from "@/lib/ocr/types";
 import { formatMAD, parseMADToCentimes } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useState } from "react";
@@ -30,6 +35,8 @@ type Props = {
     category: string;
     description?: string | null;
   };
+  /** businessId is required to save offline entries */
+  businessId?: string | undefined;
   onClose: () => void;
   onSuccess: () => void;
 };
@@ -38,11 +45,13 @@ export default function EntrySheet({
   open,
   defaultType = "income",
   correcting,
+  businessId,
   onClose,
   onSuccess,
 }: Props) {
   const t = useTranslations("cashbook");
   const tc = useTranslations("common");
+  const isOnline = useNetworkStatus();
 
   const [type, setType] = useState<EntryType>(correcting?.type ?? defaultType);
   const [amountStr, setAmountStr] = useState(
@@ -54,6 +63,7 @@ export default function EntrySheet({
   const [description, setDescription] = useState(correcting?.description ?? "");
   const [status, setStatus] = useState<"idle" | "saving" | "saved" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [receiptDraft, setReceiptDraft] = useState<ReceiptDraft | null>(null);
 
   // Reset when sheet opens with a new default type or new correction
   useEffect(() => {
@@ -99,6 +109,23 @@ export default function EntrySheet({
       source: "manual" as const,
     };
 
+    // Offline path: corrections require a server round-trip (need the original entry ID)
+    if (!isOnline && !correcting && businessId) {
+      try {
+        await createOfflineEntry({ ...payload, businessId });
+        setStatus("saved");
+        setTimeout(() => {
+          onSuccess();
+          onClose();
+        }, 600);
+      } catch {
+        setStatus("error");
+        setErrorMsg(t("saved")); // fallback message
+      }
+      return;
+    }
+
+    // Online path (or correction — always online)
     const result = correcting
       ? await correctCashEntry({ entryId: correcting.entryId, ...payload })
       : await createCashEntry(payload);
@@ -114,7 +141,18 @@ export default function EntrySheet({
       onSuccess();
       onClose();
     }, 600);
-  }, [centimes, type, category, description, correcting, t, onSuccess, onClose]);
+  }, [
+    centimes,
+    type,
+    category,
+    description,
+    correcting,
+    businessId,
+    isOnline,
+    t,
+    onSuccess,
+    onClose,
+  ]);
 
   if (!open) return null;
 
@@ -219,15 +257,49 @@ export default function EntrySheet({
             ))}
           </div>
 
-          {/* Note (optional) */}
-          <input
-            type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            placeholder={t("description")}
-            maxLength={200}
-            className="mb-3 h-12 w-full rounded-xl border border-gray-200 bg-gray-50 px-4 text-sm text-gray-700 placeholder-gray-400 focus:border-kasb-300 focus:outline-none"
-          />
+          {/* Note + voice + camera */}
+          <div className="mb-3 flex items-center gap-2">
+            <input
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder={t("description")}
+              maxLength={200}
+              className="h-12 flex-1 rounded-xl border border-gray-200 bg-gray-50 px-4 text-sm text-gray-700 placeholder-gray-400 focus:border-kasb-300 focus:outline-none"
+            />
+            <VoiceEntryButton
+              onParsed={(amountCentimes, desc) => {
+                setAmountStr(String(amountCentimes / 100));
+                if (desc) setDescription(desc);
+              }}
+              onTranscript={(transcript) => setDescription(transcript)}
+            />
+            <ReceiptCaptureButton
+              onDraft={(draft) => {
+                setReceiptDraft(draft);
+                if (draft.amountCentimes && draft.amountCentimes > 0) {
+                  setAmountStr(String(draft.amountCentimes / 100));
+                }
+                if (draft.description) setDescription(draft.description);
+              }}
+              onError={(msg) => {
+                setStatus("error");
+                setErrorMsg(msg);
+              }}
+            />
+          </div>
+
+          {/* Receipt draft confirmation banner */}
+          {receiptDraft && receiptDraft.confidence !== "low" && (
+            <div className="mb-3 rounded-xl bg-amber-50 px-3 py-2">
+              <p className="text-xs text-amber-700">{t("ocr.confirmPrompt")}</p>
+              {receiptDraft.rawText && (
+                <p className="mt-1 line-clamp-2 text-xs text-amber-600 opacity-70">
+                  {receiptDraft.rawText}
+                </p>
+              )}
+            </div>
+          )}
 
           {/* Error */}
           {status === "error" && (
