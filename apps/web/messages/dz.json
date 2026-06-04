@@ -54,6 +54,7 @@
     "ocr": {
       "confirmPrompt": "تحقق من البيانات قبل التسجيل"
     },
+    "shareWhatsApp": "شارك على واتساب",
     "categories": {
       "sales": "بيع",
       "stock_purchase": "شراء السلع",
@@ -115,6 +116,26 @@
       "beauty": "حلاقة / تجميل",
       "other": "آخر"
     }
+  },
+  "customers": {
+    "title": "المدينون",
+    "addCustomer": "زيد زبون",
+    "saveCustomer": "حفظ",
+    "namePlaceholder": "اسم الزبون",
+    "phonePlaceholder": "رقم التيليفون (اختياري)",
+    "noCustomers": "ما كاين شي زبون — زيد أول زبون ديالك",
+    "noEntries": "ما كاين شي معاملات",
+    "outstandingDebt": "الدين المتبقي",
+    "settled": "خلص",
+    "owes": "خاص يخلص",
+    "history": "تاريخ المعاملات",
+    "recordSale": "بيع بالدين",
+    "recordRepayment": "خلاص دين",
+    "saleLabel": "بيع بالدين",
+    "repaymentLabel": "خلاص",
+    "confirmSale": "تسجيل البيع",
+    "confirmRepayment": "تسجيل الخلاص",
+    "notePlaceholder": "ملاحظة (اختياري)"
   },
   "credit": {
     "title": "الكريدي",

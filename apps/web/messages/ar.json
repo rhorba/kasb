@@ -54,6 +54,7 @@
     "ocr": {
       "confirmPrompt": "تحقق من البيانات قبل التسجيل"
     },
+    "shareWhatsApp": "مشاركة عبر واتساب",
     "categories": {
       "sales": "مبيعات",
       "stock_purchase": "مشتريات",
@@ -115,6 +116,26 @@
       "beauty": "حلاقة / تجميل",
       "other": "أخرى"
     }
+  },
+  "customers": {
+    "title": "العملاء",
+    "addCustomer": "إضافة عميل",
+    "saveCustomer": "حفظ",
+    "namePlaceholder": "اسم العميل",
+    "phonePlaceholder": "رقم الهاتف (اختياري)",
+    "noCustomers": "لا يوجد عملاء — أضف أول عميل لك",
+    "noEntries": "لا توجد معاملات",
+    "outstandingDebt": "الدين المتبقي",
+    "settled": "مسدَّد",
+    "owes": "مدين بـ",
+    "history": "سجل المعاملات",
+    "recordSale": "بيع بالآجل",
+    "recordRepayment": "تسجيل سداد",
+    "saleLabel": "بيع بالآجل",
+    "repaymentLabel": "سداد",
+    "confirmSale": "تسجيل البيع",
+    "confirmRepayment": "تسجيل السداد",
+    "notePlaceholder": "ملاحظة (اختياري)"
   },
   "credit": {
     "title": "نقطة الائتمان",

@@ -1,13 +1,13 @@
-import { useTranslations } from "next-intl";
+import { listCustomers } from "@/actions/customer";
+import CustomersClient from "./customers-client";
 
-// Sprint 4: customer debt book — add client, record credit sale, record payment
+export default async function CustomersPage() {
+  const customersResult = await listCustomers({});
+  const customerList = customersResult.ok ? customersResult.data : [];
 
-export default function CustomersPage() {
-  const t = useTranslations("nav");
   return (
-    <div className="p-4">
-      <h1 className="text-xl font-bold text-kasb-500">{t("customers")}</h1>
-      <p className="mt-2 text-gray-400">Sprint 4 →</p>
+    <div className="flex flex-col gap-4 p-4">
+      <CustomersClient customers={customerList} />
     </div>
   );
 }

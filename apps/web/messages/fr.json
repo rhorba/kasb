@@ -54,6 +54,7 @@
     "ocr": {
       "confirmPrompt": "Vérifiez les données avant d'enregistrer"
     },
+    "shareWhatsApp": "Partager sur WhatsApp",
     "categories": {
       "sales": "Ventes",
       "stock_purchase": "Achats stock",
@@ -115,6 +116,26 @@
       "beauty": "Coiffure / Beauté",
       "other": "Autre"
     }
+  },
+  "customers": {
+    "title": "Clients",
+    "addCustomer": "Ajouter un client",
+    "saveCustomer": "Enregistrer",
+    "namePlaceholder": "Nom du client",
+    "phonePlaceholder": "Téléphone (optionnel)",
+    "noCustomers": "Aucun client — ajoutez votre premier client",
+    "noEntries": "Aucune transaction",
+    "outstandingDebt": "Montant dû",
+    "settled": "Soldé",
+    "owes": "doit",
+    "history": "Historique",
+    "recordSale": "Vente à crédit",
+    "recordRepayment": "Remboursement",
+    "saleLabel": "Vente à crédit",
+    "repaymentLabel": "Remboursement",
+    "confirmSale": "Enregistrer la vente",
+    "confirmRepayment": "Enregistrer le remboursement",
+    "notePlaceholder": "Note (optionnel)"
   },
   "credit": {
     "title": "Mon score crédit",

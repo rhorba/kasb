@@ -12,6 +12,7 @@ import {
 import EntrySheet from "@/components/entry-sheet";
 import RevenueChart from "@/components/revenue-chart";
 import { formatMAD } from "@/lib/utils";
+import { buildWhatsAppLink, formatReceipt } from "@kasb/whatsapp";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useCallback, useState, useTransition } from "react";
@@ -20,6 +21,8 @@ type Props = {
   initialSummary: CashEntrySummary;
   initialEntries: CashEntryWithMeta[];
   initialChart: ChartDay[];
+  businessName: string;
+  businessCity?: string | undefined;
 };
 
 // Group entries by calendar date string
@@ -37,7 +40,13 @@ function groupByDate(entries: CashEntryWithMeta[]): Map<string, CashEntryWithMet
   return map;
 }
 
-export default function CashbookClient({ initialSummary, initialEntries, initialChart }: Props) {
+export default function CashbookClient({
+  initialSummary,
+  initialEntries,
+  initialChart,
+  businessName,
+  businessCity,
+}: Props) {
   const t = useTranslations("cashbook");
   const tc = useTranslations("common");
   const router = useRouter();
@@ -265,6 +274,32 @@ export default function CashbookClient({ initialSummary, initialEntries, initial
               )}
             </div>
 
+            {/* WhatsApp share — income entries only (sharing a sale receipt) */}
+            {detailEntry.type === "income" && businessName && (
+              <a
+                href={buildWhatsAppLink(
+                  undefined,
+                  formatReceipt(
+                    {
+                      amount: detailEntry.amount,
+                      type: detailEntry.type,
+                      category: detailEntry.category,
+                      description: detailEntry.description,
+                      entryDate: new Date(detailEntry.entryDate),
+                    },
+                    { name: businessName, city: businessCity },
+                    "fr",
+                  ),
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-green-500 text-base font-semibold text-white active:bg-green-600"
+              >
+                <span>📲</span>
+                {t("shareWhatsApp")}
+              </a>
+            )}
+
             {!detailEntry.isCorrected && !detailEntry.correctsId && (
               <>
                 <button
@@ -274,7 +309,7 @@ export default function CashbookClient({ initialSummary, initialEntries, initial
                     setDetailEntry(null);
                     setSheetOpen(true);
                   }}
-                  className="mt-4 flex h-14 w-full items-center justify-center rounded-xl border-2 border-kasb-200 text-base font-semibold text-kasb-600 active:bg-kasb-50"
+                  className="mt-3 flex h-14 w-full items-center justify-center rounded-xl border-2 border-kasb-200 text-base font-semibold text-kasb-600 active:bg-kasb-50"
                 >
                   {t("correction.cta")}
                 </button>
