@@ -30,6 +30,19 @@
     }
   },
   "files": {
-    "ignore": ["**/node_modules", "**/.next", "**/dist", "**/.turbo", "**/drizzle/*.sql"]
+    "ignore": [
+      "**/node_modules",
+      "**/.next",
+      "**/dist",
+      "**/.turbo",
+      "**/drizzle/*.sql",
+      "apps/web/next-env.d.ts",
+      "apps/web/public/sw.js",
+      "apps/web/public/sw.js.map",
+      "apps/web/public/workbox-*.js",
+      "apps/web/public/swe-worker-*.js",
+      "apps/web/public/worker-*.js",
+      "apps/web/public/fallback-*.js"
+    ]
   }
 }
