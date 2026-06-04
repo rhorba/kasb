@@ -36,6 +36,7 @@
       "**/dist",
       "**/.turbo",
       "**/drizzle/*.sql",
+      "**/migrations/**",
       "apps/web/next-env.d.ts",
       "apps/web/public/sw.js",
       "apps/web/public/sw.js.map",

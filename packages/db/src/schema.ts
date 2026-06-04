@@ -62,6 +62,14 @@ export const auditActionEnum = pgEnum("audit_action", [
   "score_compute",
 ]);
 
+export const notificationTypeEnum = pgEnum("notification_type", [
+  "score_improvement",
+  "low_stock",
+  "debt_reminder",
+  "sync_complete",
+  "other",
+]);
+
 // ─── Users ────────────────────────────────────────────────────────────────────
 
 export const users = pgTable("users", {
@@ -313,6 +321,28 @@ export const stockItems = pgTable(
   }),
 );
 
+// ─── Notifications ────────────────────────────────────────────────────────────
+
+export const notifications = pgTable(
+  "notifications",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    businessId: uuid("business_id").references(() => businessProfiles.id, { onDelete: "cascade" }),
+    type: notificationTypeEnum("type").notNull(),
+    title: text("title").notNull(),
+    body: text("body").notNull(),
+    data: jsonb("data"), // e.g. { stockItemId, threshold } for low_stock
+    readAt: timestamp("read_at", { withTimezone: true }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => ({
+    idxUser: index("idx_notifications_user").on(t.userId, t.createdAt),
+  }),
+);
+
 // ─── Audit Logs ───────────────────────────────────────────────────────────────
 // Append-only; admin-readable only (see rls.sql)
 
@@ -360,5 +390,7 @@ export type SelectAEProgress = typeof aeRegistrationProgress.$inferSelect;
 export type InsertAEProgress = typeof aeRegistrationProgress.$inferInsert;
 export type SelectStockItem = typeof stockItems.$inferSelect;
 export type InsertStockItem = typeof stockItems.$inferInsert;
+export type SelectNotification = typeof notifications.$inferSelect;
+export type InsertNotification = typeof notifications.$inferInsert;
 export type SelectAuditLog = typeof auditLogs.$inferSelect;
 export type InsertAuditLog = typeof auditLogs.$inferInsert;

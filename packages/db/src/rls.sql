@@ -160,6 +160,16 @@ CREATE POLICY audit_logs_actor_insert ON audit_logs
     actor_user_id = current_setting('app.current_user', true)::uuid
   );
 
+-- ── notifications ────────────────────────────────────────────
+ALTER TABLE notifications ENABLE ROW LEVEL SECURITY;
+ALTER TABLE notifications FORCE ROW LEVEL SECURITY;
+
+CREATE POLICY notifications_user_scope ON notifications
+  USING (
+    user_id = current_setting('app.current_user', true)::uuid
+    OR current_setting('app.current_role', true) = 'admin'
+  );
+
 -- ── otp_codes ────────────────────────────────────────────────
 -- No RLS — managed exclusively by the auth service layer
 -- which connects with elevated credentials before setting app context.
