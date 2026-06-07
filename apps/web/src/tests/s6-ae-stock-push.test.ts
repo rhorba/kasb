@@ -462,6 +462,7 @@ describe("recordStockSale — stock deduction", () => {
 
     const result = await recordStockSale({ itemId: ITEM_ID, quantity: 15 }); // want 15, have 10
     expect(result.ok).toBe(false);
+    if (result.ok) return;
     expect(result.message).toMatch(/insuffisant/i);
   });
 
@@ -470,6 +471,7 @@ describe("recordStockSale — stock deduction", () => {
 
     const result = await recordStockSale({ itemId: ITEM_ID, quantity: 1 });
     expect(result.ok).toBe(false);
+    if (result.ok) return;
     expect(result.error).toBe("forbidden");
   });
 
@@ -478,6 +480,7 @@ describe("recordStockSale — stock deduction", () => {
 
     const result = await recordStockSale({ itemId: ITEM_ID, quantity: 1 });
     expect(result.ok).toBe(false);
+    if (result.ok) return;
     expect(result.message).toMatch(/introuvable/i);
   });
 });

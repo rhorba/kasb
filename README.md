@@ -46,6 +46,15 @@ pnpm dev   # http://localhost:3000
 
 ---
 
+## Docker Compose (Production)
+
+```bash
+cp .env.example .env   # set AUTH_SECRET, INFOBIP keys, R2 keys, VAPID keys
+docker compose up -d   # postgres + web + worker + caddy (TLS on port 443)
+```
+
+First deploy: the `docker-entrypoint-initdb.d/` scripts apply migrations + RLS automatically.
+
 ## Architecture
 
 ```
@@ -86,7 +95,7 @@ Web Speech API (voice entry), pg-boss, Cloudflare R2
 
 ## Security Model
 
-- **Phone OTP**: 5-min expiry, 3-attempt lockout, bcrypt hash stored, never plaintext
+- **Phone OTP**: 5-min expiry, 3-attempt lockout, Argon2id hash stored, never plaintext
 - **Append-only entries**: cash entries cannot be deleted (RLS blocks DELETE). Corrections via correcting entry.
 - **Credit data**: never shared with partners without explicit user consent at application time
 - **Partner isolation**: each partner sees only their own leads (RLS)
@@ -115,8 +124,10 @@ Web Speech API (voice entry), pg-boss, Cloudflare R2
 | `INFOBIP_BASE_URL` | Infobip API endpoint |
 | `R2_PRIVATE_*` | Cloudflare R2 private (receipt photos) |
 | `PAYMENT_GATEWAY` | `none` in v0.1 (no payments on platform) |
-| `VAPID_PUBLIC_KEY` | Web Push public key |
+| `VAPID_EMAIL` | Contact email for VAPID push (e.g. `admin@kasb.ma`) |
+| `VAPID_PUBLIC_KEY` | Web Push public key (generate: `node -e "require('web-push').generateVAPIDKeys()"`) |
 | `VAPID_PRIVATE_KEY` | Web Push private key |
+| `NEXT_PUBLIC_VAPID_PUBLIC_KEY` | Same as `VAPID_PUBLIC_KEY` — must be client-accessible |
 
 ---
 

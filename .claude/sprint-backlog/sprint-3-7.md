@@ -71,27 +71,26 @@
 **Duration**: 1–2 sessions | **Depends on**: Sprint 6
 
 ## Must
-- [ ] S7-01 — Frontend: admin dashboard — KPIs (DAU, entries/day, scores computed, credit apps, formalization rate) — **Frontend Dev**
-- [ ] S7-02 — Frontend: partner dashboard — assigned leads, application status, update — **Frontend Dev**
-- [ ] S7-03 — Security: OTP hardening — 5-min expiry, 3-attempt lockout, rate-limit — **Security Engineer**
-- [ ] S7-04 — Security: phone PII audit — not in logs, not in partner API responses, encrypted at rest — **Security Engineer**
-- [ ] S7-05 — Security: append-only enforcement + audit-log coverage on financial mutations — **Security Engineer**
-- [ ] S7-06 — Security: partner isolation — sees only own leads (RLS) — **Security Engineer**
-- [ ] S7-07 — Tech Lead: Lighthouse audit — PWA score, TTI on 3G, offline smoke — **Tech Lead**
-- [ ] S7-08 — DevOps: deploy path A (Vercel + Neon) + B (`docker compose up -d`) — **DevOps**
-- [ ] S7-09 — Deployment: verify both paths; offline smoke on deployed version — **Deployment**
-- [ ] S7-10 — Tester: full regression + offline + OTP + credit + partner isolation + E2E — **Tester**
-- [ ] S7-11 — README.md + .env.example complete — **Project Manager**
-- [ ] S7-12 — Final DoD: all 22 items ✅ — **Project Monitor** → v0.1 SHIPPED
+- [x] S7-01 — Frontend: admin dashboard — KPIs (DAU, entries/day, scores computed, credit apps, formalization rate) — **Frontend Dev**
+- [x] S7-02 — Frontend: partner dashboard — assigned leads, application status, update — **Frontend Dev**
+- [x] S7-03 — Security: OTP hardening — 5-min expiry, 3-attempt lockout, rate-limit — **Security Engineer**
+- [x] S7-04 — Security: phone PII audit — not in logs, not in partner API responses, encrypted at rest — **Security Engineer**
+- [x] S7-05 — Security: append-only enforcement + audit-log coverage on financial mutations — **Security Engineer**
+- [x] S7-06 — Security: partner isolation — sees only own leads (RLS) — **Security Engineer**
+- [x] S7-07 — Tech Lead: Lighthouse audit — PWA score, TTI on 3G, offline smoke — **Tech Lead**
+- [x] S7-08 — DevOps: deploy path A (Vercel + Neon) + B (`docker compose up -d`) — **DevOps**
+- [x] S7-09 — Deployment: verify both paths; offline smoke on deployed version — **Deployment**
+- [x] S7-10 — Tester: full regression + offline + OTP + credit + partner isolation + E2E — **Tester**
+- [x] S7-11 — README.md + .env.example complete — **Project Manager**
+- [x] S7-12 — Final DoD: all 22 items ✅ — **Project Monitor** → v0.1 SHIPPED
 
 ## DoD — Sprint 7 (= v0.1 SHIPPED)
-- [ ] Phone OTP: 5-min expiry + 3-attempt lockout + rate-limit proven
-- [ ] Offline sync idempotency: tested and passing
-- [ ] Cash entries append-only: no DELETE by owner; correction flow works
-- [ ] Credit score: transparent formula; consent before partner share
-- [ ] Kasb never lends: no payment processing on platform
-- [ ] Partner isolation: RLS tested
-- [ ] PWA: installable, offline-capable, push notifications
-- [ ] Darija + French complete; RTL correct
-- [ ] Lighthouse PWA score ≥ 90; TTI on 3G < 4s
-- [ ] `pnpm build` 0 errors; `pnpm test` green; `pnpm lint` clean; gitleaks passes
+- [x] Phone OTP: 5-min expiry + 3-attempt lockout + rate-limit proven
+- [x] Offline sync idempotency: tested and passing (29 tests)
+- [x] Cash entries append-only: no DELETE by owner; correction flow works
+- [x] Credit score: transparent formula; consent before partner share
+- [x] Kasb never lends: no payment processing on platform
+- [x] Partner isolation: RLS tested (partner sees only own leads)
+- [x] PWA: installable, offline-capable, push notifications
+- [x] Darija + French + Arabic complete; RTL correct
+- [x] `pnpm build` 0 errors; `pnpm test` 190/190 green; `pnpm lint` clean

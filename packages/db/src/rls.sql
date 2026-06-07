@@ -186,6 +186,17 @@ CREATE POLICY notifications_user_scope ON notifications
     OR current_setting('app.current_role', true) = 'admin'
   );
 
+-- ── push_subscriptions ───────────────────────────────────────
+-- Users manage only their own subscriptions; service layer uses elevated creds for delivery.
+ALTER TABLE push_subscriptions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE push_subscriptions FORCE ROW LEVEL SECURITY;
+
+CREATE POLICY push_subscriptions_user_scope ON push_subscriptions
+  USING (
+    user_id = current_setting('app.current_user', true)::uuid
+    OR current_setting('app.current_role', true) = 'admin'
+  );
+
 -- ── otp_codes ────────────────────────────────────────────────
 -- No RLS — managed exclusively by the auth service layer
 -- which connects with elevated credentials before setting app context.

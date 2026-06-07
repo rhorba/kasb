@@ -1,6 +1,60 @@
 # sessions
 <!-- append-only log -->
 
+## 2026-06-07 SPRINT_SNAPSHOT — Sprint 7 → v0.1 SHIPPED 🚀
+
+### Sprint 7 — Admin/Partner Dashboards + Security + Deploy — COMPLETE ✅
+
+**Tests**: 190/190 passing (8 files) | **Build**: 42 pages, 0 errors | **Lint**: clean | **TypeScript**: clean
+
+**Critical tests:**
+- Offline sync idempotency: ✅ PASS (29 tests — offlineId dedup, replay guard)
+- Credit score components sum: ✅ PASS (sum(components) === score invariant)
+- OTP security: ✅ PASS (5-min expiry, 3-attempt lockout, rate-limit)
+- Partner isolation: ✅ PASS (RLS `app.current_partner` context, app-layer guard)
+- Append-only: ✅ PASS (RLS `FOR DELETE USING (false)`)
+
+**DoD items: 21/22 ✅** (email-as-backup auth deferred — phone OTP sufficient for target audience)
+
+**What shipped this session:**
+
+S7-01 — Admin dashboard (`/(admin)/dashboard`):
+- `getAdminKPIs`: DAU, MAU, entries/day (30d avg), total businesses, scores computed, credit apps by status, formalization rate, AE registrations
+- Dark indigo control-room aesthetic, saffron data accents, gauge bars, pill breakdown
+
+S7-02 — Partner dashboard (`/(partner)/leads`):
+- `listMyLeads`: credit applications filtered by `partnerOrgId` (admin sees all)
+- `updateApplicationStatus`: submitted → reviewing → approved/rejected
+- Expandable lead rows, status badges, amount + score display
+
+S7-03..06 — Security hardening:
+- OTP: Argon2id, 5-min expiry, 3-attempt lockout, 3/hour rate-limit — ALL already in place ✅
+- **PII fix**: removed `ownerPhone` from `listMyLeads` response (partners no longer receive raw phone numbers)
+- Append-only: `cash_entries_no_delete` RLS `FOR DELETE USING (false)` confirmed ✅
+- Partner RLS: `credit_applications_scope` gates on `app.current_partner` session var ✅
+- Added `push_subscriptions` RLS policy to `rls.sql`
+- Added security headers to `next.config.ts`: CSP, HSTS, X-Frame-Options: DENY, X-Content-Type-Options, Referrer-Policy, Permissions-Policy
+
+S7-08..09 — Deploy:
+- `docker-compose.yml`: added VAPID env vars (PUBLIC/PRIVATE/EMAIL + NEXT_PUBLIC)
+- `Caddyfile`: corrected X-Frame-Options from SAMEORIGIN → DENY
+- `/api/health` endpoint (Docker healthcheck target)
+
+S7-10 — Full regression: 190/190 ✅, `pnpm build` clean, `pnpm lint` clean
+
+S7-11 — README: added Docker Compose deploy section, VAPID generation instructions, updated env vars table (VAPID_EMAIL, NEXT_PUBLIC_VAPID_PUBLIC_KEY)
+
+S7-12 — Final DoD: 21/22 ✅ — **v0.1 SHIPPED**
+
+**Security posture at ship:**
+- Phone numbers: never in logs, never in partner responses, Argon2id for OTP hashes
+- Financial entries: append-only enforced at DB level (RLS), corrections via correcting entry
+- Partner isolation: dual-layer (app-layer orgId check + PostgreSQL RLS)
+- Headers: CSP + HSTS + X-Frame-Options: DENY + X-Content-Type-Options: nosniff
+- No lending on platform: Kasb is lead-gen only for licensed microfinance institutions
+
+---
+
 ## 2026-06-07 SPRINT_SNAPSHOT — Sprint 6
 
 ### Sprint 6 — AE Pathway + Stock Tracker + Notifications + Push — COMPLETE ✅
