@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReceiptDraft } from "@/lib/ocr/types";
+import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
 
 type Props = {
@@ -11,14 +12,14 @@ type Props = {
 export default function ReceiptCaptureButton({ onDraft, onError }: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [loading, setLoading] = useState(false);
+  const t = useTranslations("cashbook.ocr");
 
   async function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    // Limit size client-side before upload
     if (file.size > 5 * 1024 * 1024) {
-      onError("Image trop grande (max 5 Mo)");
+      onError(t("errorTooBig"));
       return;
     }
 
@@ -28,16 +29,15 @@ export default function ReceiptCaptureButton({ onDraft, onError }: Props) {
       body.append("image", file);
       const res = await fetch("/api/ocr", { method: "POST", body });
       if (!res.ok) {
-        onError("Erreur OCR — saisissez manuellement");
+        onError(t("errorOcr"));
         return;
       }
       const draft = (await res.json()) as ReceiptDraft;
       onDraft(draft);
     } catch {
-      onError("Erreur réseau — saisissez manuellement");
+      onError(t("errorNetwork"));
     } finally {
       setLoading(false);
-      // Reset input so the same file can be re-selected
       if (inputRef.current) inputRef.current.value = "";
     }
   }

@@ -13,6 +13,10 @@ const withPWA = withPWAInit({
   disable: process.env.NODE_ENV === "development" && !process.env.ENABLE_PWA,
   workboxOptions: {
     disableDevLogs: true,
+    // Inject push-handler.js into the generated service worker so it can receive push events
+    importScripts: ["/push-handler.js"],
+    // Exclude push-handler from precaching (it's imported directly, not fetched by the app)
+    exclude: [/push-handler\.js$/],
   },
 });
 

@@ -52,7 +52,10 @@
       "isCorrection": "تصحيح"
     },
     "ocr": {
-      "confirmPrompt": "تحقق من البيانات قبل التسجيل"
+      "confirmPrompt": "تحقق من البيانات قبل التسجيل",
+      "errorTooBig": "الصورة كبيرة جداً (الحد الأقصى 5 ميغابايت)",
+      "errorOcr": "خطأ في القراءة — أدخل يدوياً",
+      "errorNetwork": "خطأ في الشبكة — أدخل يدوياً"
     },
     "shareWhatsApp": "مشاركة عبر واتساب",
     "categories": {
@@ -156,6 +159,19 @@
     "remaining": "متبقٍ",
     "recordSale": "تسجيل بيع",
     "confirmSell": "تأكيد"
+  },
+  "sync": {
+    "offline": "بلا إنترنت",
+    "pending": "{count} في الانتظار",
+    "syncing": "جاري المزامنة...",
+    "error": "خطأ في المزامنة — إعادة المحاولة",
+    "pendingEntries": "{count} إدخال في الانتظار"
+  },
+  "notifications": {
+    "blocked": "الإشعارات محظورة. يُرجى السماح بها في إعدادات المتصفح.",
+    "enabled": "🔔 الإشعارات مُفعَّلة",
+    "disable": "تعطيل",
+    "enable": "🔔 تفعيل الإشعارات"
   },
   "customers": {
     "title": "العملاء",

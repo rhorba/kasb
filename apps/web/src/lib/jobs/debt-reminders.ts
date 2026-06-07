@@ -2,6 +2,7 @@
 // Idempotent: skips a customer if a debt_reminder notification was already created today.
 // Called by pg-boss scheduler (Sprint 6) or directly via /api/jobs/debt-reminders (internal).
 
+import { sendPushToUser } from "@/lib/push/send";
 import { businessProfiles, customers, db, notifications } from "@kasb/db";
 import { and, eq, gt, isNull, lt, or, sql } from "drizzle-orm";
 
@@ -59,14 +60,19 @@ export async function runDebtReminders(): Promise<{ notified: number; skipped: n
     }
 
     const dirhams = (c.outstandingDebt / 100).toFixed(2);
+    const notifTitle = `${c.customerName} vous doit ${dirhams} MAD`;
+    const notifBody = `Rappel : ${c.customerName} a une dette non réglée de ${dirhams} MAD depuis plus de ${OVERDUE_DAYS} jours.`;
+
     await db.insert(notifications).values({
       userId: c.ownerId,
       businessId: c.businessId,
       type: "debt_reminder",
-      title: `${c.customerName} vous doit ${dirhams} MAD`,
-      body: `Rappel : ${c.customerName} a une dette non réglée de ${dirhams} MAD depuis plus de ${OVERDUE_DAYS} jours.`,
+      title: notifTitle,
+      body: notifBody,
       data: { customerId: c.customerId, amountCentimes: c.outstandingDebt },
     });
+
+    await sendPushToUser(c.ownerId, { title: notifTitle, body: notifBody });
 
     notified++;
   }

@@ -1,11 +1,14 @@
 "use client";
 
 import type { ChartDay } from "@/actions/cash-entry";
+import { useTranslations } from "next-intl";
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis } from "recharts";
 
 type Props = { data: ChartDay[] };
 
 export default function RevenueChart({ data }: Props) {
+  const t = useTranslations("cashbook");
+
   if (data.length === 0) return null;
 
   const formatted = data.map((d) => ({
@@ -37,8 +40,8 @@ export default function RevenueChart({ data }: Props) {
               boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
             }}
           />
-          <Bar dataKey="income" fill="#E8A020" radius={[4, 4, 0, 0]} name="Recettes" />
-          <Bar dataKey="expense" fill="#2D2D6B" radius={[4, 4, 0, 0]} name="Dépenses" />
+          <Bar dataKey="income" fill="#E8A020" radius={[4, 4, 0, 0]} name={t("income")} />
+          <Bar dataKey="expense" fill="#2D2D6B" radius={[4, 4, 0, 0]} name={t("expense")} />
         </BarChart>
       </ResponsiveContainer>
     </div>

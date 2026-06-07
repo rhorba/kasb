@@ -1,5 +1,6 @@
 import { getMyProfile } from "@/actions/business-profile";
 import { auth, signOut } from "@/auth";
+import { PushToggle } from "@/components/push-toggle";
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
 import ProfileForm from "./profile-form";
@@ -45,6 +46,7 @@ export default async function ProfilePage() {
             <span>📦 Suivi des Stocks</span>
             <span className="text-gray-400">→</span>
           </Link>
+          <PushToggle />
         </div>
       )}
 

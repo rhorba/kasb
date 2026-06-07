@@ -1,6 +1,7 @@
 // stock.alerts job — finds items below threshold and creates in-app notifications.
 // Idempotent: skips if a low_stock notification was already sent today for this item.
 
+import { sendPushToUser } from "@/lib/push/send";
 import { businessProfiles, db, notifications, stockItems, users } from "@kasb/db";
 import { and, eq, gt, sql } from "drizzle-orm";
 
@@ -55,18 +56,23 @@ export async function runStockAlerts(): Promise<{ notified: number; skipped: num
       continue;
     }
 
+    const notifTitle = `Stock faible: ${item.itemName}`;
+    const notifBody = `Il vous reste ${item.currentStock} ${item.unit} de ${item.itemName} (seuil: ${item.threshold}).`;
+
     await db.insert(notifications).values({
       userId: item.ownerId,
       businessId: item.businessId,
       type: "low_stock",
-      title: `Stock faible: ${item.itemName}`,
-      body: `Il vous reste ${item.currentStock} ${item.unit} de ${item.itemName} (seuil: ${item.threshold}).`,
+      title: notifTitle,
+      body: notifBody,
       data: {
         stockItemId: item.itemId,
         currentStock: item.currentStock,
         threshold: item.threshold,
       },
     });
+
+    await sendPushToUser(item.ownerId, { title: notifTitle, body: notifBody });
 
     notified++;
   }

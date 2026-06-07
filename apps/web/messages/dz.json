@@ -52,7 +52,10 @@
       "isCorrection": "تصحيح"
     },
     "ocr": {
-      "confirmPrompt": "تحقق من البيانات قبل التسجيل"
+      "confirmPrompt": "تحقق من البيانات قبل التسجيل",
+      "errorTooBig": "الصورة كبيرة بزاف (أكثر من 5 ميغا)",
+      "errorOcr": "مشكل ف القراءة — دخل يدوياً",
+      "errorNetwork": "مشكل ف الاتصال — دخل يدوياً"
     },
     "shareWhatsApp": "شارك على واتساب",
     "categories": {
@@ -156,6 +159,19 @@
     "remaining": "متبقي",
     "recordSale": "سجل بيع",
     "confirmSell": "تأكيد"
+  },
+  "sync": {
+    "offline": "بلا إنترنت",
+    "pending": "{count} ف الانتظار",
+    "syncing": "تزامن...",
+    "error": "خطأ ف التزامن — كيعاود",
+    "pendingEntries": "{count} دخلة ف الانتظار"
+  },
+  "notifications": {
+    "blocked": "الإشعارات معطلة — فعّلها من إعدادات المتصفح",
+    "enabled": "🔔 الإشعارات فعّالة",
+    "disable": "عطّل",
+    "enable": "🔔 فعّل الإشعارات"
   },
   "customers": {
     "title": "المدينون",

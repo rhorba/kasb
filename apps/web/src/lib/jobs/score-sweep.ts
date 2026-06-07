@@ -3,6 +3,7 @@
 // Skips businesses with < 30 entries / 30 days (computeCreditScore returns null).
 // Notifies the owner when score increases by ≥ 5 points.
 
+import { sendPushToUser } from "@/lib/push/send";
 import type { CashEntry, DebtEntry } from "@kasb/core";
 import { computeCreditScore, matchPartners } from "@kasb/credit";
 import {
@@ -105,21 +106,26 @@ export async function runScoreSweep(): Promise<{ computed: number; skipped: numb
     // Notify if score improved by ≥ 5 points
     const prevPoints = prevScore?.score ?? 0;
     if (result.score - prevPoints >= 5) {
+      const notifTitle = `Votre score Kasb a augmenté à ${result.score}/100`;
+      const notifBody =
+        eligiblePartnerIds.length > 0
+          ? `Vous êtes maintenant éligible chez ${eligiblePartnerIds.length} partenaire(s) microfinance.`
+          : "Continuez à enregistrer vos ventes pour atteindre votre objectif.";
+
       await db.insert(notifications).values({
         userId: biz.userId,
         businessId: biz.businessId,
         type: "score_improvement",
-        title: `Votre score Kasb a augmenté à ${result.score}/100`,
-        body:
-          eligiblePartnerIds.length > 0
-            ? `Vous êtes maintenant éligible chez ${eligiblePartnerIds.length} partenaire(s) microfinance.`
-            : "Continuez à enregistrer vos ventes pour atteindre votre objectif.",
+        title: notifTitle,
+        body: notifBody,
         data: {
           previousScore: prevPoints,
           newScore: result.score,
           eligiblePartnerIds,
         },
       });
+
+      await sendPushToUser(biz.userId, { title: notifTitle, body: notifBody });
     }
 
     computed++;

@@ -323,6 +323,26 @@ export const stockItems = pgTable(
   }),
 );
 
+// ─── Push Subscriptions ───────────────────────────────────────────────────────
+
+export const pushSubscriptions = pgTable(
+  "push_subscriptions",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    endpoint: text("endpoint").notNull(),
+    p256dh: text("p256dh").notNull(),
+    auth: text("auth").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => ({
+    idxUser: index("idx_push_subscriptions_user").on(t.userId),
+    uniqEndpoint: unique("uq_push_endpoint").on(t.endpoint),
+  }),
+);
+
 // ─── Notifications ────────────────────────────────────────────────────────────
 
 export const notifications = pgTable(
@@ -394,5 +414,7 @@ export type SelectStockItem = typeof stockItems.$inferSelect;
 export type InsertStockItem = typeof stockItems.$inferInsert;
 export type SelectNotification = typeof notifications.$inferSelect;
 export type InsertNotification = typeof notifications.$inferInsert;
+export type SelectPushSubscription = typeof pushSubscriptions.$inferSelect;
+export type InsertPushSubscription = typeof pushSubscriptions.$inferInsert;
 export type SelectAuditLog = typeof auditLogs.$inferSelect;
 export type InsertAuditLog = typeof auditLogs.$inferInsert;

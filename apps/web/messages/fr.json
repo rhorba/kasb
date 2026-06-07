@@ -52,7 +52,10 @@
       "isCorrection": "Correction"
     },
     "ocr": {
-      "confirmPrompt": "Vérifiez les données avant d'enregistrer"
+      "confirmPrompt": "Vérifiez les données avant d'enregistrer",
+      "errorTooBig": "Image trop grande (max 5 Mo)",
+      "errorOcr": "Erreur OCR — saisissez manuellement",
+      "errorNetwork": "Erreur réseau — saisissez manuellement"
     },
     "shareWhatsApp": "Partager sur WhatsApp",
     "categories": {
@@ -156,6 +159,19 @@
     "remaining": "restant(s)",
     "recordSale": "Enregistrer une vente",
     "confirmSell": "Confirmer"
+  },
+  "sync": {
+    "offline": "Hors ligne",
+    "pending": "{count} en attente",
+    "syncing": "Synchronisation…",
+    "error": "Erreur de sync — réessai automatique",
+    "pendingEntries": "{count} entrée(s) en attente de sync"
+  },
+  "notifications": {
+    "blocked": "Les notifications sont bloquées. Autorisez-les dans les paramètres du navigateur.",
+    "enabled": "🔔 Notifications activées",
+    "disable": "Désactiver",
+    "enable": "🔔 Activer les notifications"
   },
   "customers": {
     "title": "Clients",
