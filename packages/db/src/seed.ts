@@ -92,6 +92,14 @@ function eid(bizKey: string, day: number, seq: number): string {
   return `seed-${bizKey}-d${day}-s${seq}`;
 }
 
+// Valid deterministic UUIDs for seed entries (hex-only, proper 8-4-4-4-12 format)
+// bizHex codes: epi=e910  sal=5a10  ate=a7e0  res=1e50  ele=e1e0
+function makeEntryId(bizHex: string, d: number, seq: number): string {
+  const dh = d.toString(16).padStart(4, "0");
+  const sh = seq.toString(16).padStart(4, "0");
+  return `0000${bizHex}-0000-${dh}-${sh}-000000000000`;
+}
+
 /** Épicerie Hassan — commerce, consistent daily sales */
 function generateEpicerieEntries(): EntryRow[] {
   const rows: EntryRow[] = [];
@@ -101,7 +109,7 @@ function generateEpicerieEntries(): EntryRow[] {
     // Sales: higher Fri-Sat (dow 5-6)
     const salesBase = dow >= 5 ? 1800 : 1200;
     rows.push({
-      id: `00000000-epi-${d.toString().padStart(3, "0")}-0001`,
+      id: makeEntryId("e910", d, 1),
       businessId: ID.epicerie,
       offlineId: eid("epi", d, 1),
       type: "income",
@@ -114,7 +122,7 @@ function generateEpicerieEntries(): EntryRow[] {
     // Stock purchase twice a week (Mon + Thu = dow 1,4)
     if (dow === 1 || dow === 4) {
       rows.push({
-        id: `00000000-epi-${d.toString().padStart(3, "0")}-0002`,
+        id: makeEntryId("e910", d, 2),
         businessId: ID.epicerie,
         offlineId: eid("epi", d, 2),
         type: "expense",
@@ -128,7 +136,7 @@ function generateEpicerieEntries(): EntryRow[] {
     // Rent on 1st of month
     if (date.getDate() === 1) {
       rows.push({
-        id: `00000000-epi-${d.toString().padStart(3, "0")}-0003`,
+        id: makeEntryId("e910", d, 3),
         businessId: ID.epicerie,
         offlineId: eid("epi", d, 3),
         type: "expense",
@@ -142,7 +150,7 @@ function generateEpicerieEntries(): EntryRow[] {
     // Transport on Saturdays
     if (dow === 6) {
       rows.push({
-        id: `00000000-epi-${d.toString().padStart(3, "0")}-0004`,
+        id: makeEntryId("e910", d, 4),
         businessId: ID.epicerie,
         offlineId: eid("epi", d, 4),
         type: "expense",
@@ -166,7 +174,7 @@ function generateSalonEntries(): EntryRow[] {
     // Open Tue–Sat (dow 2–6)
     if (dow >= 2 && dow <= 6) {
       rows.push({
-        id: `00000000-sal-${d.toString().padStart(3, "0")}-0001`,
+        id: makeEntryId("5a10", d, 1),
         businessId: ID.salon,
         offlineId: eid("sal", d, 1),
         type: "income",
@@ -180,7 +188,7 @@ function generateSalonEntries(): EntryRow[] {
     // Rent 1st of month
     if (date.getDate() === 1) {
       rows.push({
-        id: `00000000-sal-${d.toString().padStart(3, "0")}-0002`,
+        id: makeEntryId("5a10", d, 2),
         businessId: ID.salon,
         offlineId: eid("sal", d, 2),
         type: "expense",
@@ -194,7 +202,7 @@ function generateSalonEntries(): EntryRow[] {
     // Utilities 15th of month
     if (date.getDate() === 15) {
       rows.push({
-        id: `00000000-sal-${d.toString().padStart(3, "0")}-0003`,
+        id: makeEntryId("5a10", d, 3),
         businessId: ID.salon,
         offlineId: eid("sal", d, 3),
         type: "expense",
@@ -218,7 +226,7 @@ function generateAtelierEntries(): EntryRow[] {
     // Project income roughly every 7–10 days
     if (d % 8 === 0 || d % 11 === 0) {
       rows.push({
-        id: `00000000-ate-${d.toString().padStart(3, "0")}-0001`,
+        id: makeEntryId("a7e0", d, 1),
         businessId: ID.atelier,
         offlineId: eid("ate", d, 1),
         type: "income",
@@ -232,7 +240,7 @@ function generateAtelierEntries(): EntryRow[] {
     // Materials bi-weekly (Mon dow=1)
     if (dow === 1 && d % 14 < 7) {
       rows.push({
-        id: `00000000-ate-${d.toString().padStart(3, "0")}-0002`,
+        id: makeEntryId("a7e0", d, 2),
         businessId: ID.atelier,
         offlineId: eid("ate", d, 2),
         type: "expense",
@@ -246,7 +254,7 @@ function generateAtelierEntries(): EntryRow[] {
     // Transport monthly
     if (date.getDate() === 20) {
       rows.push({
-        id: `00000000-ate-${d.toString().padStart(3, "0")}-0003`,
+        id: makeEntryId("a7e0", d, 3),
         businessId: ID.atelier,
         offlineId: eid("ate", d, 3),
         type: "expense",
@@ -270,7 +278,7 @@ function generateRestaurantEntries(): EntryRow[] {
     // Daily sales — higher on weekends
     const salesBase = dow === 0 || dow === 6 ? 2500 : 1600;
     rows.push({
-      id: `00000000-res-${d.toString().padStart(3, "0")}-0001`,
+      id: makeEntryId("1e50", d, 1),
       businessId: ID.restaurant,
       offlineId: eid("res", d, 1),
       type: "income",
@@ -282,7 +290,7 @@ function generateRestaurantEntries(): EntryRow[] {
     });
     // Daily supplies
     rows.push({
-      id: `00000000-res-${d.toString().padStart(3, "0")}-0002`,
+      id: makeEntryId("1e50", d, 2),
       businessId: ID.restaurant,
       offlineId: eid("res", d, 2),
       type: "expense",
@@ -295,7 +303,7 @@ function generateRestaurantEntries(): EntryRow[] {
     // Rent 1st of month
     if (date.getDate() === 1) {
       rows.push({
-        id: `00000000-res-${d.toString().padStart(3, "0")}-0003`,
+        id: makeEntryId("1e50", d, 3),
         businessId: ID.restaurant,
         offlineId: eid("res", d, 3),
         type: "expense",
@@ -309,7 +317,7 @@ function generateRestaurantEntries(): EntryRow[] {
     // Staff 10th and 25th
     if (date.getDate() === 10 || date.getDate() === 25) {
       rows.push({
-        id: `00000000-res-${d.toString().padStart(3, "0")}-0004`,
+        id: makeEntryId("1e50", d, 4),
         businessId: ID.restaurant,
         offlineId: eid("res", d, 4),
         type: "expense",
@@ -333,7 +341,7 @@ function generateElectriciteEntries(): EntryRow[] {
     // Project income every ~9 days
     if (d % 9 === 0) {
       rows.push({
-        id: `00000000-ele-${d.toString().padStart(3, "0")}-0001`,
+        id: makeEntryId("e1e0", d, 1),
         businessId: ID.electricite,
         offlineId: eid("ele", d, 1),
         type: "income",
@@ -347,7 +355,7 @@ function generateElectriciteEntries(): EntryRow[] {
     // Equipment purchase monthly
     if (date.getDate() === 5) {
       rows.push({
-        id: `00000000-ele-${d.toString().padStart(3, "0")}-0002`,
+        id: makeEntryId("e1e0", d, 2),
         businessId: ID.electricite,
         offlineId: eid("ele", d, 2),
         type: "expense",
@@ -361,7 +369,7 @@ function generateElectriciteEntries(): EntryRow[] {
     // Transport weekly on Wed
     if (dow === 3) {
       rows.push({
-        id: `00000000-ele-${d.toString().padStart(3, "0")}-0003`,
+        id: makeEntryId("e1e0", d, 3),
         businessId: ID.electricite,
         offlineId: eid("ele", d, 3),
         type: "expense",
