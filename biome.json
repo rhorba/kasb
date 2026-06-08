@@ -43,7 +43,9 @@
       "apps/web/public/workbox-*.js",
       "apps/web/public/swe-worker-*.js",
       "apps/web/public/worker-*.js",
-      "apps/web/public/fallback-*.js"
+      "apps/web/public/fallback-*.js",
+      "apps/web/coverage/**",
+      "docs/**"
     ]
   }
 }

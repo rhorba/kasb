@@ -11,6 +11,23 @@ export default defineConfig({
     coverage: {
       provider: "v8",
       reporter: ["text", "json", "html"],
+      // Only measure coverage of testable logic — exclude UI, config, generated files
+      include: ["src/actions/**/*.ts", "src/lib/**/*.ts"],
+      exclude: [
+        "src/tests/**",
+        "src/lib/idb/db.ts", // browser-only IndexedDB factory
+        "src/lib/idb/schema.ts", // pure TypeScript types/interfaces — no executable JS
+        "src/lib/idb/index.ts", // re-exports only
+        "src/lib/voice/**", // Web Speech API — browser-only
+        "src/lib/ocr/**", // OCR — browser-only
+        "src/**/*.d.ts",
+      ],
+      thresholds: {
+        lines: 80,
+        functions: 80,
+        branches: 80,
+        statements: 80,
+      },
     },
   },
   resolve: {
